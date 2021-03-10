@@ -1,12 +1,12 @@
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
             <a href="<?= base_url('assets/'); ?>index2.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>RMT</span>
+                <span class="logo-mini"><b>SPU</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>SI</b>EKID</span>
+                <span class="logo-lg"><b>SI</b>PU</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -57,14 +57,14 @@
                                 <img src="<?= base_url('assets/'); ?>img/users/default.jpg" class="user-image"
                                     alt="User Image">
                                 <span class="hidden-xs"><?php
-                                                        if ($user_session['level'] == "admin BPM") {
-                                                            echo $user_session['username'], ' BPM';
-                                                        } elseif ($user_session['level'] == "prodi") {
-                                                            echo $user_prodi['nama_prodi'];
-                                                        } elseif ($user_session['level'] == "mahasiswa") {
-                                                            echo $user_mahasiswa['nama_mahasiswa'];
+                                                        if ($user_session['level'] == "admin") {
+                                                            echo $user_session['username'];
+                                                        } elseif ($user_session['level'] == "desa") {
+                                                            echo $user_desa['nama_desa'];
+                                                        } elseif ($user_session['level'] == "panitia") {
+                                                            echo $user_session['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
                                                         } else
-                                                            echo $user_dosen['nama_dosen'];
+                                                            echo $user_session['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
                                                         ?>
                                 </span>
                             </a>

@@ -8,17 +8,16 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h2 class="display-4">Selamat Datang <?php
-                                                            if ($user_session['level'] == "admin BPM") {
-                                                                echo $user_session['username'], ' BPM';
-                                                            } elseif ($user_session['level'] == "prodi") {
-                                                                echo $user_prodi['nama_prodi'];
-                                                            } elseif ($user_session['level'] == "mahasiswa") {
-                                                                echo $user_mahasiswa['nama_mahasiswa'];
+                                                            if ($user_session['level'] == "admin") {
+                                                                echo $user_session['username'];
+                                                            } elseif ($user_session['level'] == "desa") {
+                                                                echo $user_desa['nama_desa'];
+                                                            } elseif ($user_session['level'] == "panitia") {
+                                                                echo $user_session['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
                                                             } else
-                                                                echo 'Pak ', $user_dosen['nama_dosen'];
+                                                                echo $user_session['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
                                                             ?>....!</h2>
-                    <p class="lead">SISTEM EVALUASI KINERJA DOSEN
-                        UNIVERSITAS ALMUSLIM </p>
+                    <p class="lead">SISTEM INFORMASI POSYANDU KABUPATEN BIREUEN </p>
                 </div>
             </div>
         </div>

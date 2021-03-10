@@ -1,7 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-$route['default_controller']     =     'auth/Login';
+$route['default_controller']     =     'Beranda';
+//route for auth methods
+$route['login'] = "auth/Login";
+$route['pendaftaran'] = "auth/Login/registration";
 //routes for user module
 $route['User/all_user'] = "user/User/all_user";
 $route['User/admin_BPM'] = "user/User/admin_BPM";

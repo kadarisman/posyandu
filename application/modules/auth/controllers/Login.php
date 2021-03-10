@@ -12,14 +12,14 @@ class Login extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('username')) {//status user check, has been login or not
+        if ($this->session->userdata('username')) { //status user check, has been login or not
             redirect('user/Dashboard');
         }
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'SIEKID';
+            $data['title'] = 'SIPU';
             $this->load->view('v_login', $data);
         } else {
             // validation success
@@ -43,7 +43,7 @@ class Login extends CI_Controller
                     'level' => $user['level']
                 ];
                 $this->session->set_userdata($data);
-                if ($user['level'] == 'admin BPM' || $user['level'] == 'prodi' || $user['level'] == 'dosen' || $user['level'] == 'mahasiswa') {
+                if ($user['level'] == 'admin' || $user['level'] == 'desa' || $user['level'] == 'panitia' || $user['level'] == 'peserta') {
                     redirect('user/Dashboard');
                 } else {
                     redirect('user/Dashboard');
@@ -64,8 +64,14 @@ class Login extends CI_Controller
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('level');
 
-        $this->session->set_flashdata('message1', '<div class="alert alert-success" role="alert" id="msg">Anda sudah log out</div>');
+        $this->session->set_flashdata('message1', '<div class="alert alert-danger" role="alert" id="msg">Anda sudah log out</div>');
         redirect('Auth/Login');
+    }
+
+    public function registration()
+    {
+        $data['title'] = 'Pendaftaran';
+        $this->load->view('v_pendaftaran', $data);
     }
 }
 

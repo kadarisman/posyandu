@@ -60,10 +60,17 @@
     <div class="login-box">
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('message1'); ?>
+        <h4 style="color: white; font-weight:bold; text-align:left">Ini halaman pendafataran Desa !</h4>
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg" style="font-size: 18px;"><b>Sistem Informasi Posyandu Kabupaten Bireuen </b></p>
             <form action="<?= base_url('Auth/Login') ?>" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Id Desa" name="id_desa" id="id_desa"
+                        value="<?= set_value('id_desa'); ?>">
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    <?= form_error('id_desa', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="Username" name="username" id="username"
                         value="<?= set_value('username'); ?>">
@@ -76,24 +83,25 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     <?= form_error('Password', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Ulangi Password" name="password1"
+                        id="password1">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <?= form_error('Password1', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
                 <label>
                     <input type="checkbox" class="chck"> Show Password
                 </label>
                 <div class="social-auth-links text-center">
-                    <button type="submit" class="btn btn-block btn-primary">Login</button>
+                    <button type="submit" class="btn btn-block btn-primary">Daftar</button>
                     <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
                 </div>
             </form>
             <!-- /.social-auth-links -->
 
-            <a href="#" id="btn">Lupa Password</a> |
-            <a href="<?= base_url('pendaftaran'); ?>">Belum daftar</a> |
+            <a href="<?= base_url('login'); ?>">Sudah daftar</a> |
             <a href="<?= base_url('Beranda'); ?>">Beranda</a>
             <br>
-        </div>
-        <div class="alert alert-danger fade out" id="bsalert">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            Lupa password..? Hubungi <strong> Lia Paramita !</strong>
         </div>
         <!-- /.login-box-body -->
     </div>
@@ -137,31 +145,21 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
+
+
+    <script>
+    $(document).ready(function() {
+        $('.chck').click(function() {
+            if ($(this).is(':checked')) {
+                $('#password').attr('type', 'text');
+                $('#password1').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+                $('#password1').attr('type', 'password');
+            }
+        })
+    })
+    </script>
 </body>
 
 </html>
-<script>
-$(document).ready(function() {
-    $('.chck').click(function() {
-        if ($(this).is(':checked')) {
-            $('#password').attr('type', 'text');
-        } else {
-            $('#password').attr('type', 'password');
-        }
-    });
-
-    function toggleAlert() {
-        $(".alert").toggleClass('in out');
-        return false; // Keep close.bs.alert event from removing from DOM
-    }
-    $("#btn").on("click", toggleAlert);
-    $('#bsalert').on('close.bs.alert', toggleAlert)
-})
-</script>
-<script>
-window.setTimeout(function() {
-    $("#msg").fadeTo(200, 0).slideUp(200, function() {
-        $(this).remove();
-    });
-}, 3000);
-</script>
