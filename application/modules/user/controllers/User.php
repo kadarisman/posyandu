@@ -11,6 +11,7 @@ class User extends CI_Controller
         check_login(); // this is a function in login_helper
     }
 
+
     //below the methods for managing the user table
     public function all_user() //methode get all user
     {

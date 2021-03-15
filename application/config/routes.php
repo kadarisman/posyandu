@@ -4,7 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller']     =     'Beranda';
 //route for auth methods
 $route['login'] = "auth/Login";
-$route['pendaftaran'] = "auth/Login/registration";
+$route['pendaftaran-desa'] = "auth/Login/registration";
+$route['dashboard'] = "user/Dashboard";
+
+//routes for desa module
+$route['create_DB'] = 'desa/Desa/create_DB';
+$route['desa/(:any)'] = 'Beranda/view_desa/$1';
 //routes for user module
 $route['User/all_user'] = "user/User/all_user";
 $route['User/admin_BPM'] = "user/User/admin_BPM";

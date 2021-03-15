@@ -1,5 +1,10 @@
 <!-- Left side column. contains the logo and sidebar -->
 <!-- Content Wrapper. Contains page content -->
+<style>
+.dbc {
+    color: red;
+}
+</style>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -7,16 +12,29 @@
         <div class="row">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h2 class="display-4">Selamat Datang <?php
-                                                            if ($user_session['level'] == "admin") {
-                                                                echo $user_session['username'];
-                                                            } elseif ($user_session['level'] == "desa") {
-                                                                echo $user_desa['nama_desa'];
-                                                            } elseif ($user_session['level'] == "panitia") {
-                                                                echo $user_session['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
-                                                            } else
-                                                                echo $user_session['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
-                                                            ?>....!</h2>
+                    <?= $this->session->flashdata('message'); ?>
+                    <?= $this->session->flashdata('message1'); ?>
+                    <h2 class="display-4">Selamat Datang...!
+                        <?php
+                        if ($login_session['level'] == "admin") {
+                            echo $login_session['username'];
+                        } elseif ($login_session['level'] == "desa") {
+                            if ($desa_data_login['nama_desa'] == null) { ?>
+                        <?php echo 'Desa ', $login_session['username']; ?><br><span class="dbc">Anda belum punya
+                            Database, ayo
+                            buat..!</span>
+                        <br><a href="<?= base_url('create_DB') ?>" class="btn btn-success">create
+                            DB</a>
+                        <?php
+                            } else {
+                                echo 'Desa ', $desa_data_login['nama_desa'];
+                            }
+                        } elseif ($login_session['level'] == "panitia") {
+                            echo $panitia_data_login['username'], ' Panitia Desa ', $panitia_data_login['nama_desa'];
+                        } else
+                            echo $login_session['username'], ' Peserta Desa ', $peserta_data_login['nama_desa'];
+                        ?>
+                    </h2>
                     <p class="lead">SISTEM INFORMASI POSYANDU KABUPATEN BIREUEN </p>
                 </div>
             </div>

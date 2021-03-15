@@ -4,8 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_login extends CI_Model
 {
-    public function auth($username)
+    public function desa_session()
     {
-        return $this->db->get_where('user', ['username' => $username])->row_array();
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('username', $this->session->userdata('username'));
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        return $this->db->get()->row_array();
     }
 }

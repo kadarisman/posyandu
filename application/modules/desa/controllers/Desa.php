@@ -2,7 +2,7 @@
 
     defined('BASEPATH') or exit('No direct script access allowed');
 
-    class Dosen extends CI_Controller
+    class Desa extends CI_Controller
     {
 
         public function __construct()
@@ -13,13 +13,9 @@
         //below the methods for managing the dosen table
         public function index()
         {
-            $data['title'] = 'Dosen';
-            $data['all_Dosen'] = $this->Model_dosen->get_all_dosen();
-            $data['total_mahasiswa'] = $this->Model_mahasiswa->count_mahasiswa();
-            $data['total_dosen'] = $this->Model_dosen->count_dosen();
-            $data['total_prodi'] = $this->Model_prodi->count_prodi();
-            $data['selectProdi'] = $this->Model_user->select_where('prodi', 'nama_prodi');
-            $data['selectMahasiswa'] = $this->Model_mahasiswa->get_all_mahasiswa();
+            $data['title'] = 'Desa';
+            $data['all_peserta'] = $this->Model_desa->get_all_peserta();
+            $data['total_peserta'] = $this->Model_desa->count_peserta();
             $data['user_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
             $this->load->view('templates/header', $data);
@@ -29,7 +25,32 @@
             $this->load->view('templates/footer');
         }
 
+        public function create_DB()
+        {
+            $this->form_validation->set_rules('nama_desa', 'Nama_desa', 'required|trim', [
+                'required' => 'Nama Desa tidak boleh kosong..!'
+            ]);
 
+            if ($this->form_validation->run() == false) {
+                $data['title'] = 'Dashboard';
+                $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+                $data['desa_data_login'] = $this->Model_login->desa_session();
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('v_create_DB', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $data = [
+                    'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
+                    'nama_desa' => htmlspecialchars($this->input->post('nama_desa', true)),
+                    'created' => time()
+                ];
+                $this->Model_desa->create_DB($data);
+                $this->session->set_flashdata('message1', '<div class="alert alert-success" role="alert">Selamat! Database selesai. desa sduah siap !</div>');
+                redirect('dashboard');
+            }
+        }
         public function add_dosen()
         {
             $this->form_validation->set_rules('NIDN', 'Nidn', 'required|trim|is_unique[dosen.NIDN]', [

@@ -65,91 +65,30 @@
         <div class="container">
             <h2 style="color: white; font-weight:bold; text-align:left">Selamat datang di..</h2>
             <p style="color: white; font-weight:bold;">Sistem Informasi Posyandu Kabupaten Bireuen </p>
-            <p><a class="btn btn-info" href="<?= base_url('pendaftaran'); ?>" role="button">Daftar</a>
-                <a class="btn btn-warning" href="<?= base_url('login'); ?>" role="button">Login</a>
+            <p><a class="btn btn-default" href="<?= base_url('pendaftaran-desa'); ?>" role="button">Daftar</a>
+                <a class="btn btn-default" href="<?= base_url('login'); ?>" role="button">Login</a>
             </p>
+            <?= $this->session->flashdata('message1'); ?>
         </div>
     </div>
     <div class="container">
         <div class="row">
+            <?php foreach ($desa as $ds) : ?>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Desa satu</span>
-                        <span class="info-box-number">90<small> Peserta</small></span>
-                        <span class="info-box-number"><a href="#"><span class="badge">Detail</span></a></span>
+                        <span class="info-box-number"><?= $ds->nama_desa; ?></span>
+                        <span class="info-box-text"><?= $total_peserta ?><small> Peserta</small></span>
+                        <span class="info-box-number"><a href="<?= base_url('desa/' . $ds->id_desa) ?>">
+                                <span class="badge">Lihat</span></a>
+                        </span>
                     </div>
                 </div>
             </div>
-
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Desa satu</span>
-                        <span class="info-box-number">90<small> Peserta</small></span>
-                        <span class="info-box-number"><a href="#"><span class="badge">Detail</span></a></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Desa satu</span>
-                        <span class="info-box-number">90<small> Peserta</small></span>
-                        <span class="info-box-number"><a href="#"><span class="badge">Detail</span></a></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Desa satu</span>
-                        <span class="info-box-number">90<small> Peserta</small></span>
-                        <span class="info-box-number"><a href="#"><span class="badge">Detail</span></a></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Desa satu</span>
-                        <span class="info-box-number">90<small> Peserta</small></span>
-                        <span class="info-box-number"><a href="#"><span class="badge">Detail</span></a></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-
-
+            <?php endforeach; ?>
         </div>
     </div>
     <!-- jQuery 3 -->
@@ -188,6 +127,13 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
+    <script>
+    window.setTimeout(function() {
+        $("#msg").fadeTo(200, 0).slideUp(200, function() {
+            $(this).remove();
+        });
+    }, 3000);
+    </script>
 </body>
 
 </html>

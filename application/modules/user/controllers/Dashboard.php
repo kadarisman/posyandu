@@ -14,7 +14,8 @@ class Dashboard extends CI_Controller
     public function index() // method index
     {
         $data['title'] = 'Dashboard';
-        $data['user_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);

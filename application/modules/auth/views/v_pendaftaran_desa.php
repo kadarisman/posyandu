@@ -58,16 +58,23 @@
 
 <body>
     <div class="login-box">
+        <div class="alert alert-danger fade out" id="bsalert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            Plih desa di halaman beranda <strong> Klik daftar !</strong>
+        </div>
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('message1'); ?>
-        <h4 style="color: white; font-weight:bold; text-align:left">Ini halaman pendafataran Desa !</h4>
+        <h4 style="color: white; font-weight:bold; text-align:left">Ini halaman pendafataran Desa !<br>
+            <a href="#" style="color: yellow;" id="btn">Peserta ?</a>
+        </h4>
+
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg" style="font-size: 18px;"><b>Sistem Informasi Posyandu Kabupaten Bireuen </b></p>
-            <form action="<?= base_url('Auth/Login') ?>" method="post">
+            <form action="<?= base_url('pendaftaran-desa') ?>" method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Id Desa" name="id_desa" id="id_desa"
-                        value="<?= set_value('id_desa'); ?>">
+                    <input type="text" class="form-control" placeholder="Id Desa, ex : D-LNC" name="id_desa"
+                        id="id_desa" value="<?= set_value('id_desa'); ?>">
                     <span class="glyphicon glyphicon-home form-control-feedback"></span>
                     <?= form_error('id_desa', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
@@ -75,19 +82,19 @@
                     <input type="text" class="form-control" placeholder="Username" name="username" id="username"
                         value="<?= set_value('username'); ?>">
                     <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
-                    <?= form_error('Username', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password"
                         value="<?= set_value('password'); ?>">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    <?= form_error('Password', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Ulangi Password" name="password1"
-                        id="password1">
+                    <input type="password" class="form-control" placeholder="Ulangi Password" name="password2"
+                        id="password2">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    <?= form_error('Password1', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <label>
                     <input type="checkbox" class="chck"> Show Password
@@ -152,12 +159,19 @@
         $('.chck').click(function() {
             if ($(this).is(':checked')) {
                 $('#password').attr('type', 'text');
-                $('#password1').attr('type', 'text');
+                $('#password2').attr('type', 'text');
             } else {
                 $('#password').attr('type', 'password');
-                $('#password1').attr('type', 'password');
+                $('#password2').attr('type', 'password');
             }
-        })
+        });
+
+        function toggleAlert() {
+            $(".alert").toggleClass('in out');
+            return false; // Keep close.bs.alert event from removing from DOM
+        }
+        $("#btn").on("click", toggleAlert);
+        $('#bsalert').on('close.bs.alert', toggleAlert)
     })
     </script>
 </body>

@@ -22,6 +22,17 @@ class Beranda extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Beranda';
+		$data['desa'] = $this->Model_desa->get_all_desa();
+		$data['total_peserta'] = $this->Model_peserta->count_peserta();
 		$this->load->view('v_beranda', $data);
+	}
+
+	public function view_desa($id_desa)
+	{
+		$data['title'] = 'Desa';
+		$data['desa'] = $this->Model_desa->get_desa_name($id_desa);
+		//$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
+		$data['total_peserta'] = $this->Model_peserta->count_peserta();
+		$this->load->view('v_desa', $data);
 	}
 }

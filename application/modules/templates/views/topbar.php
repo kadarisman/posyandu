@@ -57,14 +57,18 @@
                                 <img src="<?= base_url('assets/'); ?>img/users/default.jpg" class="user-image"
                                     alt="User Image">
                                 <span class="hidden-xs"><?php
-                                                        if ($user_session['level'] == "admin") {
-                                                            echo $user_session['username'];
-                                                        } elseif ($user_session['level'] == "desa") {
-                                                            echo $user_desa['nama_desa'];
-                                                        } elseif ($user_session['level'] == "panitia") {
-                                                            echo $user_session['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
+                                                        if ($login_session['level'] == "admin") {
+                                                            echo $login_session['username'];
+                                                        } elseif ($login_session['level'] == "desa") {
+                                                            if ($desa_data_login['nama_desa'] == null) {
+                                                                echo 'Desa ', $login_session['username'];
+                                                            } else {
+                                                                echo 'Desa ', $desa_data_login['nama_desa'];
+                                                            }
+                                                        } elseif ($login_session['level'] == "panitia") {
+                                                            echo $panita_data_login['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
                                                         } else
-                                                            echo $user_session['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
+                                                            echo $peserta_data_login['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
                                                         ?>
                                 </span>
                             </a>

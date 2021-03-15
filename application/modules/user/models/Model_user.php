@@ -55,9 +55,9 @@ class Model_user extends CI_Model
         return $this->db->get_where('user', ['id_user' => $id])->row_array();
     }
 
-    public function add_user($data, $table)
+    public function add_user($data)
     {
-        $this->db->insert($table, $data);
+        $this->db->insert('user', $data);
     }
 
     public function edit_user($data)

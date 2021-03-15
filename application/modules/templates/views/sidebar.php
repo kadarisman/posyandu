@@ -3,68 +3,64 @@
     <section class="sidebar">
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li><a href="<?= base_url('user/Dashboard') ?>"><i class="fa fa-users"></i> Dashboard
+            <li><a href="<?= base_url('dashboard') ?>"><i class="fa fa-users"></i> Dashboard
                     <span class="pull-right-container">
                     </span>
                 </a>
-            </li><?php if ($user_session['level'] == 'admin BPM' || $user_session['level'] == 'prodi') { ?>
+            </li>
+            <?php if ($login_session['level'] == 'admin') { ?>
             <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
                     Pengguna
-                    <span class="pull-right-container">
+                    <span class="pull-right-container">0
                     </span>
                 </a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>Master Data</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-home"></i>
+                    Desa
+                    <span class="pull-right-container">0
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?= base_url('Prodi') ?>"><i class="fa fa-circle-o"></i> Prodi
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red"><?= $total_prodi; ?></small>
-                            </span>
-                        </a></li>
-                    <li><a href="<?= base_url('Dosen') ?>"><i class="fa fa-circle-o"></i> Dosen
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red"><?= $total_dosen ?></small>
-                            </span>
-                        </a></li>
-                    <li><a href="<?= base_url('Mahasiswa') ?>"><i class="fa fa-circle-o"></i> Mahasiswa
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red"><?= $total_mahasiswa; ?></small>
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Unit
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red">12</small>
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Pengajaran
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red">12</small>
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Kuisioner
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-red">12</small>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>;
+            </li>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+                    Data Posyandu
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
+            <?php } else if ($login_session['level'] == 'desa') { ?>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+                    Peserta
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+                    Panitia
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+                    Posyandu
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
+            <?php } else if ($login_session['level'] == 'panitia') { ?>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+                    Peserta
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+                    Data Posyandu
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
             <?php } else { ?>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Kuisioner
-                    <span class="pull-right-container">
-                    </span>
-                </a>
-            </li>
+
             <?php   } ?>
 
         </ul>
