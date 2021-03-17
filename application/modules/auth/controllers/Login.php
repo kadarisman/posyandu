@@ -68,7 +68,7 @@ class Login extends CI_Controller
         redirect('/');
     }
 
-    public function registration()
+    public function registration_desa()
     {
         if ($this->session->userdata('username')) {
             redirect('login');
@@ -94,7 +94,9 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Pendaftaran Desa';
+            $this->load->view('templates/header', $data);
             $this->load->view('v_pendaftaran_desa', $data);
+            $this->load->view('templates/footer');
         } else {
             $data = [
                 'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
@@ -102,10 +104,50 @@ class Login extends CI_Controller
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'level' => 'desa',
                 'is_active' => 1,
-                'created' => time()
+                'created' => date('d-m-Y H:i:s')
             ];
             $this->Model_user->add_user($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun telah dibuat. Silakan login dan buat database !</div>');
+            redirect('login');
+        }
+    }
+
+    public function registration_peserta()
+    {
+
+        if ($this->session->userdata('username')) {
+            redirect('login');
+        }
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
+            'is_unique' => 'Username sudah terdaftar !',
+            'required' => 'Username tidak boleh kosong..!'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password tidak sama !',
+            'min_length' => 'Password terlalu pendek minimal 3 karakter !',
+            'required' => 'Password tidak boleh kosong..!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password]', [
+            'required' => 'Tidak boleh kosong..!',
+            'matches' => 'Password tidak sama..!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Pendaftaran Peserta';
+            $this->load->view('templates/header', $data);
+            $this->load->view('v_pendaftaran_peserta', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
+                'username' => htmlspecialchars($this->input->post('username', true)),
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'level' => 'peserta',
+                'is_active' => 1,
+                'created' => date('d-m-Y H:i:s')
+            ];
+            $this->Model_user->add_user($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Selamat! Anda sudah terdaftar. silahkan login !</div>');
             redirect('login');
         }
     }

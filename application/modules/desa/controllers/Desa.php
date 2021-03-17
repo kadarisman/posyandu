@@ -13,15 +13,19 @@
         //below the methods for managing the dosen table
         public function index()
         {
-            $data['title'] = 'Desa';
-            $data['all_peserta'] = $this->Model_desa->get_all_peserta();
-            $data['total_peserta'] = $this->Model_desa->count_peserta();
-            $data['user_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['title'] = 'Semua Desa';
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
+            $data['total_user'] = $this->Model_user->count_all_user();
+            $data['all_user'] = $this->Model_user->get_all_user();
+            $data['all_desa'] = $this->Model_desa->get_all_desa();
+            $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['desa_data_login'] = $this->Model_login->desa_session();
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('v_dosen', $data);
+            $this->load->view('v_all_desa', $data);
+            $this->load->view('templates/footer_copy');
             $this->load->view('templates/footer');
         }
 
@@ -44,7 +48,7 @@
                 $data = [
                     'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
                     'nama_desa' => htmlspecialchars($this->input->post('nama_desa', true)),
-                    'created' => time()
+                    'created' => date('d-m-Y H:i:s')
                 ];
                 $this->Model_desa->create_DB($data);
                 $this->session->set_flashdata('message1', '<div class="alert alert-success" role="alert">Selamat! Database selesai. desa sduah siap !</div>');

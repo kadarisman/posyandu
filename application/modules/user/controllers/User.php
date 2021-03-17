@@ -11,18 +11,37 @@ class User extends CI_Controller
         check_login(); // this is a function in login_helper
     }
 
+    public function index() // method index
+    {
+        $data['title'] = 'Dashboard';
+        $data['total_user'] = $this->Model_user->count_all_user();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('v_dashboard', $data);
+        $this->load->view('templates/footer_copy');
+        $this->load->view('templates/footer');
+    }
 
     //below the methods for managing the user table
     public function all_user() //methode get all user
     {
         $data['title'] = 'Semua Pengguna';
-        //$data['total_user'] = $this->Model_user->count_all_user();
-        $data['user_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['total_user'] = $this->Model_user->count_all_user();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
+        $data['all_user'] = $this->Model_user->get_all_user();
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('v_all_users', $data);
+        $this->load->view('templates/footer_copy');
         $this->load->view('templates/footer');
     }
 

@@ -79,7 +79,13 @@
                     <span class="info-box-icon bg-red"><i class="fa fa-folder-open"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-number"><?= $ds->nama_desa; ?></span>
-                        <span class="info-box-text"><?= $total_peserta ?><small> Peserta</small></span>
+                        <span class="info-box-text"><?php //unntuk hitung peserta masing-masing desa
+                                                        $query = $this->db->where('level', 'peserta')
+                                                            ->where('id_desa', $ds->id_desa)
+                                                            ->count_all_results('user');
+                                                        echo $query;
+                                                        ?><small>
+                                Peserta</small></span>
                         <span class="info-box-number"><a href="<?= base_url('desa/' . $ds->id_desa) ?>">
                                 <span class="badge">Lihat</span></a>
                         </span>
@@ -128,12 +134,15 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
     <script>
-    window.setTimeout(function() {
-        $("#msg").fadeTo(200, 0).slideUp(200, function() {
-            $(this).remove();
-        });
-    }, 3000);
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $("#msg").fadeTo(200, 0).slideUp(200, function() {
+                $(this).remove();
+            });
+        }, 3000);
+    })
     </script>
+
 </body>
 
 </html>

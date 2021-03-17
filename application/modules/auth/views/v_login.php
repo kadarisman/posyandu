@@ -149,6 +149,11 @@ $(document).ready(function() {
             $('#password').attr('type', 'password');
         }
     });
+    window.setTimeout(function() {
+        $("#msg").fadeTo(200, 0).slideUp(200, function() {
+            $(this).remove();
+        });
+    }, 3000);
 
     function toggleAlert() {
         $(".alert").toggleClass('in out');
@@ -157,11 +162,4 @@ $(document).ready(function() {
     $("#btn").on("click", toggleAlert);
     $('#bsalert').on('close.bs.alert', toggleAlert)
 })
-</script>
-<script>
-window.setTimeout(function() {
-    $("#msg").fadeTo(200, 0).slideUp(200, function() {
-        $(this).remove();
-    });
-}, 3000);
 </script>

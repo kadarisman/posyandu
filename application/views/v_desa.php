@@ -60,12 +60,16 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid" style="background-color: transparent; margin-bottom:0px;">
+    <div class="jumbotron jumbotron-fluid" style="background-color: transparent; margin-bottom:0px; margin-top:0px;">
         <div class="container">
             <h2 style="color: white; font-weight:bold; text-align:left">Selamat datang di desa
                 <?= $desa->nama_desa; ?>..</h2>
             <p style="color: white; font-weight:bold;">Sistem Informasi Posyandu Kabupaten Bireuen </p>
-            <p><a class="btn btn-default" href="<?= base_url('pendaftaran-desa'); ?>" role="button">Daftar Peserta</a>
+            <p><a class="btn btn-default" href="<?= base_url('pendaftaran-peserta/' . $desa->id_desa) ?>"
+                    role="button">Daftar
+                    Posyandu <?= $desa->nama_desa; ?></a>
+                <a class="btn btn-default" href="<?= base_url('beranda') ?>" role="button">Beranda</a>
+
             </p>
             <?= $this->session->flashdata('message1'); ?>
         </div>
@@ -76,7 +80,7 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Jumlah peserta <?= $total_peserta; ?> orang</h3>
+                            <h3 class="box-title" id="judul">Data peserta <?= $desa->nama_desa; ?></h3>
                             <br>
                         </div>
                         <!-- /.box-header -->
@@ -124,7 +128,7 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Data posyandu</h3>
+                            <h3 class="box-title" id="judul">Data posyandu <?= $desa->nama_desa; ?></h3>
                             <br>
                         </div>
                         <!-- /.box-header -->

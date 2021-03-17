@@ -166,6 +166,12 @@
             }
         });
 
+        window.setTimeout(function() {
+            $("#msg").fadeTo(200, 0).slideUp(200, function() {
+                $(this).remove();
+            });
+        }, 3000);
+
         function toggleAlert() {
             $(".alert").toggleClass('in out');
             return false; // Keep close.bs.alert event from removing from DOM

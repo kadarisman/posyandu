@@ -1,9 +1,3 @@
-<footer class="main-footer">
-    &copy; <?php echo date('Y'); ?><span class="font-weight-bold"> Sistem Informasi Evaluasi Kinerja
-        Dosen</span>
-</footer>
-
-</div>
 <!-- jQuery 3 -->
 <script src="<?= base_url('assets/'); ?>bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -53,15 +47,12 @@ $(function() {
     $('#example2').DataTable({
         'paging': true,
         'lengthChange': false,
-        'searching': false,
+        'searching': true,
         'ordering': true,
         'info': true,
         'autoWidth': true
     })
 })
-</script>
-<script>
-
 </script>
 <script>
 $(document).ready(function() {
@@ -74,13 +65,20 @@ $(document).ready(function() {
             $('#password2').attr('type', 'password');
         }
     });
+    window.setTimeout(function() {
+        $("#msg").fadeTo(200, 0).slideUp(200, function() {
+            $(this).remove();
+        });
+    }, 3000);
 
     function toggleAlert() {
         $(".alert").toggleClass('in out');
         return false; // Keep close.bs.alert event from removing from DOM
     }
     $("#btn1").on("click", toggleAlert);
+    $("#btn_peserta").on("click", toggleAlert);
     $('#bsalert').on('close.bs.alert', toggleAlert)
+    $('#bsalert_peserta').on('close.bs.alert', toggleAlert)
 })
 </script>
 </body>

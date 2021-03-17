@@ -10,43 +10,8 @@ class Model_user extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->order_by("level", "asc");
-        return $this->db->get()->result();
-    }
-
-    public function get_user_admin()
-    {
-        $this->db->select('*');
-        $this->db->from('user')->where('level', 'admin BPM');
-        return $this->db->get()->result();
-    }
-
-    public function get_user_prodi()
-    {
-        $this->db->select('*');
-        $this->db->from('user')->where('level', 'prodi');
-        $this->db->join('prodi', 'prodi.kd_prodi = user.kd_prodi');
-        $this->db->order_by('nama_prodi', 'asc');
-        return $this->db->get()->result();
-    }
-
-    public function get_user_dosen()
-    {
-        $this->db->select('*');
-        $this->db->from('user')->where('level', 'dosen');
-        $this->db->join('dosen', 'dosen.NIDN = user.username', 'left');
-        $this->db->join('prodi', 'prodi.kd_prodi = dosen.kd_prodi', 'left');
-        $this->db->order_by('nama_prodi', 'asc');
-        return $this->db->get()->result();
-    }
-
-    public function get_user_mahasiswa()
-    {
-        $this->db->select('*');
-        $this->db->from('user')->where('level', 'mahasiswa');
-        $this->db->join('mahasiswa', 'mahasiswa.NPM = user.username', 'left');
-        $this->db->join('prodi', 'prodi.kd_prodi = mahasiswa.kd_prodi', 'left');
-        $this->db->order_by('nama_prodi', 'asc');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->order_by('level', 'asc');
         return $this->db->get()->result();
     }
 
@@ -79,9 +44,10 @@ class Model_user extends CI_Model
         return $this->db->get()->result();
     }
 
+
     public function count_all_user()
     {
-        return $this->db->count_all('user');
+        return $this->db->count_all_results('user');
     }
 
     public function count_admin_user()

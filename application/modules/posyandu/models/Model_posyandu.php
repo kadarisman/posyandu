@@ -2,25 +2,21 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Model_peserta extends CI_Model
+class Model_posyandu extends CI_Model
 {
     public function count_peserta()
     {
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('level', 'peserta');
-        $this->db->join('desa', 'desa.id_desa = user.id_desa');
-        return $this->db->count_all();
     }
     public function count_dosen()
     {
         return $this->db->count_all('dosen');
     }
 
-    public function get_all_dosen()
+    public function get_all_peserta()
     {
         $this->db->select('*');
-        $this->db->from('dosen');
+        $this->db->from('user');
+        $this->db->where('level', 'peserta');
         return $this->db->get()->result();
     }
 

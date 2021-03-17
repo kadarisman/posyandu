@@ -9,15 +9,15 @@
                 </a>
             </li>
             <?php if ($login_session['level'] == 'admin') { ?>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+            <li><a href="<?= base_url('all-user') ?>"><i class="fa fa-users"></i>
                     Pengguna
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_user ?>
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-home"></i>
+            <li><a href="<?= base_url('desa') ?>"><i class="fa fa-home"></i>
                     Desa
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_desa ?>
                     </span>
                 </a>
             </li>

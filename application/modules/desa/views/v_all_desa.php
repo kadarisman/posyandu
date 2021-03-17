@@ -15,12 +15,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Username</th>
-                                            <th>Nama</th>
-                                            <th>Nik</th>
-                                            <th>Level</th>
-                                            <th>Status</th>
-                                            <th>Desa</th>
+                                            <th>Id Desa</th>
+                                            <th>Nama Desa</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -29,23 +25,13 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($all_user as $usr) :
+                                        foreach ($all_desa as $ds) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $usr->username ?></td>
-                                            <td><?= $usr->nama ?></td>
-                                            <td><?= $usr->nik ?></td>
-                                            <td><?= $usr->level ?></td>
-                                            <td><?php
-                                                    if ($usr->is_active == 1) {
-                                                        echo 'Aktif';
-                                                    } else {
-                                                        echo 'Tidak aktif';
-                                                    }
-                                                    ?></td>
-                                            <td><?= $usr->nama_desa ?></td>
+                                            <td><?= $ds->id_desa ?></td>
+                                            <td><?= $ds->nama_desa ?></td>
                                             <td>
                                                 <a class="badge progress-bar-primary">Edit</a>
                                                 <a href="" class="badge progress-bar-danger"
