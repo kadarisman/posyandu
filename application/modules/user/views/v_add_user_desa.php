@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6 ">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tambah Desa</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form action="" method="post">
+
+                        <div class="box-body">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Id Desa, ex : D-LNC" name="id_desa"
+                                    id="id_desa" value="<?= set_value('id_desa'); ?>">
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <?= form_error('id_desa', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Username" name="username"
+                                    id="username" value="<?= set_value('username'); ?>">
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" class="form-control" placeholder="Password" name="password"
+                                    id="password" value="<?= set_value('password'); ?>">
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" class="form-control" placeholder="Ulangi Password"
+                                    name="password2" id="password2">
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?><br>
+                                <label>
+                                    <input type="checkbox" class="chck"> Show Password
+                                </label>
+                            </div>
+                            <div class="social-auth-links text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="<?= base_url('all-admin-desa') ?>" class="btn btn-primary">Batal</a>
+                                <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+</div>

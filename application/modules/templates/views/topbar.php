@@ -58,17 +58,17 @@
                                     alt="User Image">
                                 <span class="hidden-xs"><?php
                                                         if ($login_session['level'] == "admin") {
-                                                            echo $login_session['username'];
+                                                            echo $login_session['nama'];
                                                         } elseif ($login_session['level'] == "desa") {
                                                             if ($desa_data_login['nama_desa'] == null) {
-                                                                echo 'Desa ', $login_session['username'];
+                                                                echo 'Desa..?';
                                                             } else {
                                                                 echo 'Desa ', $desa_data_login['nama_desa'];
                                                             }
                                                         } elseif ($login_session['level'] == "panitia") {
-                                                            echo $panita_data_login['username'], ' Panitia Desa ', $user_panitia['nama_desa'];
+                                                            echo $login_session['nama'], ' Panitia Desa ', $desa_data_login['nama_desa'];
                                                         } else
-                                                            echo $peserta_data_login['username'], ' Peserta Desa ', $user_peserta['nama_desa'];
+                                                            echo $login_session['nama'], ' Peserta Desa ', $desa_data_login['nama_desa'];
                                                         ?>
                                 </span>
                             </a>

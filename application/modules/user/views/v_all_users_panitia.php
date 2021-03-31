@@ -5,11 +5,13 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Semua Pengguna</h3><br>
+                            <h3 class="box-title" id="judul">Semua Panitia</h3>
+                            <a href="<?= base_url('tambah-panitia') ?>" class="badge progress-bar-primary">+</a>
+                            <br>
                         </div>
-                        <?= $this->session->flashdata('message1'); ?>
                         <!-- /.box-header -->
                         <div class="box-body">
+                            <?= $this->session->flashdata('message1'); ?>
                             <div class="table-responsive">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -17,38 +19,38 @@
                                             <th>No</th>
                                             <th>Username</th>
                                             <th>Nama</th>
-                                            <th>Nik</th>
-                                            <th>Level</th>
-                                            <th>Status</th>
                                             <th>Desa</th>
+                                            <th>Ditambahkan</th>
+                                            <th>Diubah</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php //var_dump($all_admin); 
+                                        <?php //var_dump($all_pntin); 
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($all_user as $usr) :
+                                        foreach ($user_panitia as $pnt) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $usr->username ?></td>
-                                            <td><?= $usr->nama ?></td>
-                                            <td><?= $usr->nik ?></td>
-                                            <td><?= $usr->level ?></td>
-                                            <td><?php
-                                                    if ($usr->is_active == 1) {
-                                                        echo 'Aktif';
+                                            <td><?= $pnt->username ?></td>
+                                            <td><?= $pnt->nama ?></td>
+                                            <td><?= $pnt->nama_desa ?></td>
+                                            <td><?= $pnt->created ?></td>
+                                            <td><?php if ($pnt->modifed == nulL) {
+                                                        echo 'belum pernah diubah';
                                                     } else {
-                                                        echo 'Tidak aktif';
+                                                        echo $pnt->modifed;
                                                     }
-                                                    ?></td>
-                                            <td><?= $usr->nama_desa ?></td>
+                                                    ?>
+                                            </td>
                                             <td>
-                                                <a class="badge progress-bar-primary">Edit</a>
-                                                <a href="" class="badge progress-bar-danger"
+                                                <a href="<?= base_url('edit-panitia/' . $pnt->id_user) ?>"
+                                                    class="badge progress-bar-primary">Edit</a>
+                                                <a href="<?= base_url('user/User/delete_panitia/' . $pnt->id_user) ?>"
+                                                    class="badge progress-bar-danger"
                                                     onclick="return confirm('Yakin..?');">Hapus</a>
                                             </td>
                                         </tr>

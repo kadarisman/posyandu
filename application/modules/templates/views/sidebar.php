@@ -9,9 +9,27 @@
                 </a>
             </li>
             <?php if ($login_session['level'] == 'admin') { ?>
-            <li><a href="<?= base_url('all-user') ?>"><i class="fa fa-users"></i>
-                    Pengguna
-                    <span class="pull-right-container"><?= $total_user ?>
+            <li><a href="<?= base_url('all-admin') ?>"><i class="fa fa-users"></i>
+                    Admin
+                    <span class="pull-right-container"><?= $total_admin ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('all-admin-desa') ?>"><i class="fa fa-users"></i>
+                    Admin Desa
+                    <span class="pull-right-container"><?= $total_admin_desa ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('all-panitia') ?>"><i class="fa fa-users"></i>
+                    Panitia
+                    <span class="pull-right-container"><?= $total_user_panitia ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('all-peserta') ?>"><i class="fa fa-users"></i>
+                    Peserta
+                    <span class="pull-right-container"><?= $total_user_peserta ?>
                     </span>
                 </a>
             </li>
@@ -29,17 +47,18 @@
             </li>
             <?php } else if ($login_session['level'] == 'desa') { ?>
             <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
-                    Peserta
-                    <span class="pull-right-container">0
-                    </span>
-                </a>
-            </li>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
                     Panitia
                     <span class="pull-right-container">0
                     </span>
                 </a>
             </li>
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+                    Peserta
+                    <span class="pull-right-container"><?= $total_user_peserta_desa ?>
+                    </span>
+                </a>
+            </li>
+
             <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
                     Posyandu
                     <span class="pull-right-container">0

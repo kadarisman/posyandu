@@ -24,6 +24,13 @@ class Beranda extends CI_Controller
 		$data['title'] = 'Beranda';
 		$data['desa'] = $this->Model_desa->get_all_desa();
 		//$data['peserta_desa'] = $this->Model_desa->count_peserta_desa();
+
+		// if (($this->session->userdata('level') == "desa")) { // nyoe pat error??
+		//$data['hitung_coba'] = $this->Model_user->hitung_coba();
+		// } else {
+		// }
+
+
 		$this->load->view('v_beranda', $data);
 	}
 

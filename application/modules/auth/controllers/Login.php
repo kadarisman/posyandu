@@ -40,7 +40,8 @@ class Login extends CI_Controller
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'username' => $user['username'],
-                    'level' => $user['level']
+                    'level' => $user['level'],
+                    'id_desa' => $user['id_desa']
                 ];
                 $this->session->set_userdata($data);
                 if ($user['level'] == 'admin' || $user['level'] == 'desa' || $user['level'] == 'panitia' || $user['level'] == 'peserta') {
@@ -54,7 +55,7 @@ class Login extends CI_Controller
                 redirect('auth/Login');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-info"></i> Alert!</h4>Belum Terdaftar, hubungi Admin BPM <a href="https://forms.gle/HsWFiMyKfsvASuYk9" target="_blank"><strong>klik disini</strong></a> </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-info"></i> Alert!</h4>Belum Terdaftar, hubungi Lia Paramita</div>');
             redirect('auth/Login');
         }
     }
@@ -132,6 +133,31 @@ class Login extends CI_Controller
             'matches' => 'Password tidak sama..!'
         ]);
 
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
+            'required' => 'Nama tidak boleh kosong..!'
+        ]);
+
+        $this->form_validation->set_rules('nik', 'Nik', 'required|trim|is_unique[user.nik]', [
+            'is_unique' => 'NIK sudah terdaftar !',
+            'required' => 'Nik tidak boleh kosong..!'
+        ]);
+
+        $this->form_validation->set_rules('TTL', 'Ttl', 'required|trim', [
+            'required' => 'TTL tidak boleh kosong..!'
+        ]);
+
+        $this->form_validation->set_rules('kelamin', 'Kelamin', 'required|trim', [
+            'required' => 'Kelamin harus dipilih..!'
+        ]);
+
+        $this->form_validation->set_rules('kriteria', 'Kriteria', 'required|trim', [
+            'required' => 'Kriteria harus di pilih..!'
+        ]);
+
+        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+            'required' => 'Nama ibu tidak boleh kosong..!'
+        ]);
+
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Pendaftaran Peserta';
             $this->load->view('templates/header', $data);
@@ -142,12 +168,18 @@ class Login extends CI_Controller
                 'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'nama' => htmlspecialchars($this->input->post('nama', true)),
+                'nik' => htmlspecialchars($this->input->post('nik', true)),
+                'TTL' => htmlspecialchars($this->input->post('TTL', true)),
+                'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
+                'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
+                'nama_ibu' => htmlspecialchars($this->input->post('nama_ibu', true)),
                 'level' => 'peserta',
                 'is_active' => 1,
                 'created' => date('d-m-Y H:i:s')
             ];
             $this->Model_user->add_user($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Selamat! Anda sudah terdaftar. silahkan login !</div>');
+            $this->session->set_flashdata('message1', '<div class="alert alert-warning" role="alert">Selamat! Anda sudah terdaftar. silahkan login !</div>');
             redirect('login');
         }
     }

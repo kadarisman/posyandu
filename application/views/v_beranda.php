@@ -68,6 +68,7 @@
             <p><a class="btn btn-default" href="<?= base_url('pendaftaran-desa'); ?>" role="button">Daftar</a>
                 <a class="btn btn-default" href="<?= base_url('login'); ?>" role="button">Login</a>
             </p>
+            <p style="color: white; font-weight:bold;">Desa-desa yang sudah terdaftar </p>
             <?= $this->session->flashdata('message1'); ?>
         </div>
     </div>

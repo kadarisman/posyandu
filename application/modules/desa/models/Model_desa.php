@@ -15,6 +15,12 @@ class Model_desa  extends CI_Model
         return $this->db->count_all_results('desa');
     }
 
+    public function edit_desa($data)
+    {
+        $this->db->where('id_desa', $this->input->post('id_desa'));
+        $this->db->update('desa', $data);
+    }
+
     // public function count_peserta_desa()
     // {
     //     $this->db->select('*, count(id_desa) AS hitung');
@@ -28,6 +34,10 @@ class Model_desa  extends CI_Model
 
     //     //SELECT b.nama_desa, count(a.id_desa) AS total_peserta FROM user a LEFT JOIN desa b USING(id_desa) WHERE a.level='peserta' GROUP BY a.id_desa
     // }
+    public function add_desa($data)
+    {
+        $this->db->insert('desa', $data);
+    }
 
     public function get_desa_name($id_desa)
     {
@@ -37,5 +47,14 @@ class Model_desa  extends CI_Model
     public function create_DB($data)
     {
         $this->db->insert('desa', $data);
+    }
+
+    public function delete_desa($id_desa)
+    {
+        $this->db->delete('desa', ['id_desa' => $id_desa]);
+    }
+    public function get_desa_by_id($id_desa)
+    {
+        return $this->db->get_where('desa', ['id_desa' => $id_desa])->row();
     }
 }

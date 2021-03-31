@@ -22,7 +22,9 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="<?= base_url('assets/'); ?>bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="<?= base_url('assets/'); ?>bower_components/moment/min/moment.min.js"></script>
+
 <script src="<?= base_url('assets/'); ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
 <!-- datepicker -->
 <script src="<?= base_url('assets/'); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js">
 </script>
@@ -79,8 +81,15 @@ $(document).ready(function() {
     $("#btn_peserta").on("click", toggleAlert);
     $('#bsalert').on('close.bs.alert', toggleAlert)
     $('#bsalert_peserta').on('close.bs.alert', toggleAlert)
+});
+//Date picker
+$(function() {
+    $('#datepicker').datepicker({
+        autoclose: true
+    })
 })
 </script>
+
 </body>
 
 </html>

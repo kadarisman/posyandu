@@ -5,8 +5,8 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Semua Desa</h3>
-                            <a href="<?= base_url('tambah-desa') ?>" class="badge progress-bar-primary">+</a>
+                            <h3 class="box-title" id="judul">Data Admin</h3>
+                            <a href="<?= base_url('tambah-admin') ?>" class="badge progress-bar-primary">+</a>
                         </div>
                         <?= $this->session->flashdata('message1'); ?>
                         <!-- /.box-header -->
@@ -16,8 +16,12 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Id Desa</th>
-                                            <th>Nama Desa</th>
+                                            <th>Username</th>
+                                            <th>Nama</th>
+                                            <th>Level</th>
+                                            <th>Status</th>
+                                            <th>Ditambahkan</th>
+                                            <th>Diubah</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -26,17 +30,33 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($all_desa as $ds) :
+                                        foreach ($user_admin as $adm) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $ds->id_desa ?></td>
-                                            <td><?= $ds->nama_desa ?></td>
+                                            <td><?= $adm->username ?></td>
+                                            <td><?= $adm->nama ?></td>
+                                            <td><?= $adm->level ?></td>
+                                            <td><?php
+                                                    if ($adm->is_active == 1) {
+                                                        echo 'Aktif';
+                                                    } else {
+                                                        echo 'Tidak aktif';
+                                                    }
+                                                    ?></td>
+                                            <td><?= $adm->created ?></td>
+                                            <td><?php if ($adm->modifed == nulL) {
+                                                        echo 'belum pernah diubah';
+                                                    } else {
+                                                        echo $adm->modifed;
+                                                    }
+                                                    ?>
+                                            </td>
                                             <td>
-                                                <a href="<?= base_url('edit-desa/' . $ds->id_desa) ?>"
+                                                <a href="<?= base_url('edit-admin/' . $adm->id_user) ?>"
                                                     class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('desa/Desa/delete_desa/' . $ds->id_desa) ?>"
+                                                <a href="<?= base_url('user/User/delete_admin/' . $adm->id_user) ?>"
                                                     class="badge progress-bar-danger"
                                                     onclick="return confirm('Yakin..?');">Hapus</a>
                                             </td>

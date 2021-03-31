@@ -6,18 +6,59 @@ class Model_user extends CI_Model
 {
     //below this codeigniter querys builder to process data users from the database :
 
-    public function get_all_user() // query get all data user from user table
+    public function get_all_user_admin() // query get all data user from user table
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('level', 'admin');
+        return $this->db->get()->result();
+    }
+    public function get_all_user_desa() // query get all data user from user table
     {
         $this->db->select('*');
         $this->db->from('user');
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
-        $this->db->order_by('level', 'asc');
+        $this->db->where('level', 'desa');
         return $this->db->get()->result();
     }
 
-    public function get_user_ById($id)
+    public function get_all_user_peserta() // query get all data user from user table
     {
-        return $this->db->get_where('user', ['id_user' => $id])->row_array();
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->order_by('kriteria', 'asc');
+        $this->db->where('level', 'peserta');
+        return $this->db->get()->result();
+    }
+    public function get_all_user_peserta_desa() // query get all data user from user table
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->order_by('kriteria', 'asc');
+        $this->db->where('id_desa', $desa);
+        $this->db->where('level', 'peserta');
+        return $this->db->get()->result();
+    }
+
+    public function get_all_user_panitia() // query get all data user from user table
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->where('level', 'panitia');
+        return $this->db->get()->result();
+    }
+
+    public function get_user_by_id($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->where('id_user', $id_user);
+        return $this->db->get()->row();
     }
 
     public function add_user($data)
@@ -27,13 +68,13 @@ class Model_user extends CI_Model
 
     public function edit_user($data)
     {
-        $this->db->where('id_user', $data['id_user']);
+        $this->db->where('id_user', $this->input->post('id_user'));
         $this->db->update('user', $data);
     }
 
-    public function delete_user($id)
+    public function delete_user($id_user)
     {
-        $this->db->delete('user', ['id_user' => $id]);
+        $this->db->delete('user', ['id_user' => $id_user]);
     }
 
     public function select_where($table, $orderBy)
@@ -45,26 +86,58 @@ class Model_user extends CI_Model
     }
 
 
-    public function count_all_user()
+    public function count_all_user_pesrta() // pengen lon hitung dile bg
     {
+        $this->db->where('level', 'peserta');
         return $this->db->count_all_results('user');
     }
+
+    public function count_user_pesrta_desa() // method nyo
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->from('user');
+        $this->db->where('id_desa', $desa);
+        $this->db->where('level', 'peserta');
+        // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+        return $this->db->count_all_results();
+    }
+
+    // public function hitung_coba() // method nyo
+    // {
+    //     // $this->db->where('username', $this->session->userdata('username')); 
+
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->from('user');
+    //     $this->db->where('id_desa', $desa);
+    //     $this->db->where('level', 'peserta');
+    //     // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+    //     return $this->db->count_all_results();
+    // }
+
+
+    public function count_all_user_panitia()
+    {
+        $this->db->where('level', 'panitia');
+        return $this->db->count_all_results('user');
+    }
+
 
     public function count_admin_user()
     {
         return $this->db
-            ->where(['level' => 'admin BPM'])
+            ->where(['level' => 'admin'])
+            ->from('user')
+            ->count_all_results();
+    }
+    public function count_admin_desa()
+    {
+        return $this->db
+            ->where(['level' => 'desa'])
             ->from('user')
             ->count_all_results();
     }
 
-    public function count_prodi_user()
-    {
-        return $this->db
-            ->where(['level' => 'prodi'])
-            ->from('user')
-            ->count_all_results();
-    }
+
 
     public function count_dosen_user()
     {
