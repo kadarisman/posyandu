@@ -46,13 +46,13 @@
                 </a>
             </li>
             <?php } else if ($login_session['level'] == 'desa') { ?>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+            <li><a href="<?= base_url('panitia') ?>"><i class="fa fa-users"></i>
                     Panitia
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_user_panitia_desa ?>
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+            <li><a href="<?= base_url('peserta') ?>"><i class="fa fa-users"></i>
                     Peserta
                     <span class="pull-right-container"><?= $total_user_peserta_desa ?>
                     </span>

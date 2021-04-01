@@ -23,6 +23,16 @@ $route['edit-admin-desa/(:any)'] = 'user/User/edit_user_desa/$1';
 $route['edit-peserta/(:any)'] = 'user/User/edit_user_peserta/$1';
 $route['edit-panitia/(:any)'] = 'user/User/edit_user_panitia/$1';
 
+//routes for user desa after login
+$route['peserta'] = 'user/User/user_peserta_desa';
+$route['panitia'] = 'user/User/user_panitia_desa';
+$route['edit-peserta-ku/(:any)'] = 'user/User/edit_user_peserta_desa/$1';
+$route['edit-panitia-ku/(:any)'] = 'user/User/edit_user_panitia_desa/$1';
+$route['tambah-peserta-ku'] = 'user/User/add_user_peserta_desa';
+$route['tambah-panitia-ku'] = 'user/User/add_user_panitia_desa';
+$route['edit-peserta-ku/(:any)'] = 'user/User/edit_user_peserta_desa/$1';
+$route['edit-panitia-ku/(:any)'] = 'user/User/edit_user_panitia_desa/$1';
+
 //routes for desa module
 $route['create_DB'] = 'desa/Desa/create_DB';
 $route['desa/(:any)'] = 'Beranda/view_desa/$1';

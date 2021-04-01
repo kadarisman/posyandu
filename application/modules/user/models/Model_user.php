@@ -31,17 +31,6 @@ class Model_user extends CI_Model
         $this->db->where('level', 'peserta');
         return $this->db->get()->result();
     }
-    public function get_all_user_peserta_desa() // query get all data user from user table
-    {
-        $desa = $this->session->userdata('id_desa');
-        $this->db->select('*');
-        $this->db->from('user');
-        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
-        $this->db->order_by('kriteria', 'asc');
-        $this->db->where('id_desa', $desa);
-        $this->db->where('level', 'peserta');
-        return $this->db->get()->result();
-    }
 
     public function get_all_user_panitia() // query get all data user from user table
     {
@@ -49,6 +38,26 @@ class Model_user extends CI_Model
         $this->db->from('user');
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
         $this->db->where('level', 'panitia');
+        return $this->db->get()->result();
+    }
+
+    public function get_all_user_peserta_desa() // query get all data user from user table
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->from('user');
+        $this->db->where('id_desa', $desa);
+        $this->db->where('level', 'peserta');
+        // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+        return $this->db->get()->result();
+    }
+
+    public function get_all_user_panitia_desa() // query get all data user from user table
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->from('user');
+        $this->db->where('id_desa', $desa);
+        $this->db->where('level', 'panitia');
+        // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
         return $this->db->get()->result();
     }
 
@@ -98,6 +107,15 @@ class Model_user extends CI_Model
         $this->db->from('user');
         $this->db->where('id_desa', $desa);
         $this->db->where('level', 'peserta');
+        // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+        return $this->db->count_all_results();
+    }
+    public function count_user_panitia_desa() // method nyo
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->from('user');
+        $this->db->where('id_desa', $desa);
+        $this->db->where('level', 'panitia');
         // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
         return $this->db->count_all_results();
     }

@@ -57,6 +57,12 @@
                                 <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
                                 <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Tempat lahir" name="t_lahir"
+                                    id="t_lahir" value="<?= set_value('t_lahir'); ?>">
+                                <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
+                                <?= form_error('t_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="form-group">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
