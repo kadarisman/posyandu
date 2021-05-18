@@ -39,9 +39,9 @@
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
-                    Data Posyandu
-                    <span class="pull-right-container">0
+            <li><a href="<?= base_url('posyandu') ?>"><i class="fa fa-database"></i>
+                    Posyandu
+                    <span class="pull-right-container"> <?= $total_posyandu ?>
                     </span>
                 </a>
             </li>
@@ -59,27 +59,32 @@
                 </a>
             </li>
 
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
                     Posyandu
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_posyandu_desa ?>
                     </span>
                 </a>
             </li>
             <?php } else if ($login_session['level'] == 'panitia') { ?>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-users"></i>
+            <li><a href="<?= base_url('peserta') ?>"><i class="fa fa-users"></i>
                     Peserta
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_user_peserta_desa ?>
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
                     Data Posyandu
-                    <span class="pull-right-container">0
+                    <span class="pull-right-container"><?= $total_posyandu_desa ?>
                     </span>
                 </a>
             </li>
             <?php } else { ?>
-
+            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
+                    Tidak ada data
+                    <span class="pull-right-container">0
+                    </span>
+                </a>
+            </li>
             <?php   } ?>
 
         </ul>

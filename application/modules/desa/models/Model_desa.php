@@ -15,6 +15,7 @@ class Model_desa  extends CI_Model
         return $this->db->count_all_results('desa');
     }
 
+
     public function edit_desa($data)
     {
         $this->db->where('id_desa', $this->input->post('id_desa'));
@@ -55,6 +56,9 @@ class Model_desa  extends CI_Model
     }
     public function get_desa_by_id($id_desa)
     {
-        return $this->db->get_where('desa', ['id_desa' => $id_desa])->row();
+        $this->db->select('*');
+        $this->db->from('desa');
+        $this->db->where('id_desa', $id_desa);
+        return $this->db->get()->row();
     }
 }

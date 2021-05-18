@@ -22,6 +22,10 @@ $route['edit-admin/(:any)'] = 'user/User/edit_user_admin/$1';
 $route['edit-admin-desa/(:any)'] = 'user/User/edit_user_desa/$1';
 $route['edit-peserta/(:any)'] = 'user/User/edit_user_peserta/$1';
 $route['edit-panitia/(:any)'] = 'user/User/edit_user_panitia/$1';
+$route['edit-profil/(:any)'] = 'user/User/edit_profile_adm_pntia/$1';
+$route['edit-profil-ku/(:any)'] = 'user/User/edit_profile_peserta/$1';
+$route['edit-profil-desa/(:any)'] = 'user/User/edit_profile_desa/$1';
+$route['profil'] = 'user/User/profile';
 
 //routes for user desa after login
 $route['peserta'] = 'user/User/user_peserta_desa';
@@ -39,3 +43,8 @@ $route['desa/(:any)'] = 'Beranda/view_desa/$1';
 $route['desa'] = 'desa/Desa';
 $route['edit-desa/(:any)'] = 'desa/Desa/edit_desa/$1';
 $route['tambah-desa'] = 'desa/Desa/add_desa';
+
+
+$route['posyandu'] = 'posyandu/Posyandu/get_all_posyandu';
+$route['posyandu-desa'] = 'posyandu/Posyandu/get_posyandu_desa';
+$route['tambah-posyandu'] = 'posyandu/Posyandu/add_posyandu';

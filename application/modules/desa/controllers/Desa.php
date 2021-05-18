@@ -23,6 +23,7 @@
             $data['all_desa'] = $this->Model_desa->get_all_desa();
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
+            $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu();
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -56,6 +57,8 @@
                 $data['user_peserta'] = $this->Model_user->get_all_user_peserta();
                 $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
                 $data['desa_data_login'] = $this->Model_login->desa_session();
+                $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa();
+                $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu();
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/sidebar', $data);
@@ -118,6 +121,8 @@
                 $data['total_desa'] = $this->Model_desa->count_all_desa();
                 $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
                 $data['desa_data_login'] = $this->Model_login->desa_session();
+                $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa();
+                $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu();
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/sidebar', $data);

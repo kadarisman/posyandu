@@ -7,7 +7,12 @@
                         <div class="box-header">
                             <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu</h3>
+                                <h3 class="box-title" id="judul">Semua Data Posyandu desa <?php
+                                                                                            if ($login_session['level'] == "panitia") {
+                                                                                                echo $panitia_data_login['nama_desa'];
+                                                                                            } else {
+                                                                                                echo $desa_data_login['nama_desa'];
+                                                                                            } ?></h3>
                             </center>
                             <br>
                         </div>
@@ -20,7 +25,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Kriteria</th>
-                                            <th>Desa</th>
                                             <th>Nama Peserta</th>
                                             <th>Berat Badan</th>
                                             <th>Tinggi Badan</th>
@@ -37,13 +41,12 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu as $psnd) :
+                                        foreach ($posyandu_desa as $psnd) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
                                             <td><?= $psnd->kriteria ?></td>
-                                            <td><?= $psnd->nama_desa ?></td>
                                             <td><?= $psnd->nama ?></td>
                                             <td><?= $psnd->berat_badan ?></td>
                                             <td><?= $psnd->tinggi_badan ?></td>

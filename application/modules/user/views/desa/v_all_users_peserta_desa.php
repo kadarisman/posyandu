@@ -5,8 +5,15 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Semua Peserta</h3>
-                            <a href="<?= base_url('tambah-peserta-ku') ?>" class="badge progress-bar-primary">+</a>
+                            <a href="<?= base_url('tambah-peserta-ku') ?>" class="badge progress-bar-primary">Tambah</a>
+                            <center>
+                                <h3 class="box-title" id="judul">Semua Peserta desa <?php
+                                                                                    if ($login_session['level'] == "panitia") {
+                                                                                        echo $panitia_data_login['nama_desa'];
+                                                                                    } else {
+                                                                                        echo $desa_data_login['nama_desa'];
+                                                                                    } ?></h3>
+                            </center>
                             <br>
                         </div>
                         <!-- /.box-header -->

@@ -30,7 +30,7 @@
                                     <ul class="menu">
                                         <li>
                                             <!-- Task item -->
-                                            <a href="#">
+                                            <a href="<?= base_url('profil') ?>">
                                                 <h3>
                                                     Profile
                                                 </h3>
@@ -66,9 +66,9 @@
                                                                 echo 'Desa ', $desa_data_login['nama_desa'];
                                                             }
                                                         } elseif ($login_session['level'] == "panitia") {
-                                                            echo $login_session['nama'], ' Panitia Desa ', $desa_data_login['nama_desa'];
+                                                            echo $login_session['nama'];
                                                         } else
-                                                            echo $login_session['nama'], ' Peserta Desa ', $desa_data_login['nama_desa'];
+                                                            echo $login_session['nama'];
                                                         ?>
                                 </span>
                             </a>

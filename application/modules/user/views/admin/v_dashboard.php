@@ -18,7 +18,7 @@
                         <?php
 
                         if ($login_session['level'] == "admin") {
-                            echo $login_session['nama'], ', Status Anda Admin';
+                            echo $login_session['nama'], ', Anda Admin';
                         } elseif ($login_session['level'] == "desa") {
                             if ($desa_data_login['nama_desa'] == null) { ?>
                         <?php echo 'Desa ', $login_session['username']; ?><br><span class="dbc">Anda belum punya
@@ -31,9 +31,9 @@
                                 echo 'Desa ', $desa_data_login['nama_desa'];
                             }
                         } elseif ($login_session['level'] == "panitia") {
-                            echo $panitia_data_login['nama'], ', Status Anda Panitia Desa ', $panitia_data_login['nama_desa'];
+                            echo $panitia_data_login['nama'], ', Panitia Desa ', $panitia_data_login['nama_desa'];
                         } else
-                            echo $login_session['username'], ', Status Anda Peserta Desa ', $peserta_data_login['nama_desa'];
+                            echo $peserta_data_login['nama'], ', Peserta Desa ', $peserta_data_login['nama_desa'];
                         ?>
                     </h2>
                     <p class="lead">SISTEM INFORMASI POSYANDU KABUPATEN BIREUEN </p>
