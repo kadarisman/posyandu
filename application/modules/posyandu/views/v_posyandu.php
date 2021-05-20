@@ -45,8 +45,8 @@
                                             <td><?= $psnd->kriteria ?></td>
                                             <td><?= $psnd->nama_desa ?></td>
                                             <td><?= $psnd->nama ?></td>
-                                            <td><?= $psnd->berat_badan ?></td>
-                                            <td><?= $psnd->tinggi_badan ?></td>
+                                            <td><?= $psnd->berat_badan, ' Kg' ?></td>
+                                            <td><?= $psnd->tinggi_badan, ' Cm' ?></td>
                                             <td><?= $psnd->PSG ?></td>
                                             <td><?= $psnd->kelamin ?></td>
                                             <td><?php $lahir = $psnd->TTL;

@@ -48,3 +48,7 @@ $route['tambah-desa'] = 'desa/Desa/add_desa';
 $route['posyandu'] = 'posyandu/Posyandu/get_all_posyandu';
 $route['posyandu-desa'] = 'posyandu/Posyandu/get_posyandu_desa';
 $route['tambah-posyandu'] = 'posyandu/Posyandu/add_posyandu';
+$route['edit-posyandu/(:any)'] = 'posyandu/Posyandu/edit_posyandu/$1';
+
+
+$route['rekap-balita-desa'] = 'posyandu/Posyandu/rekap_balita_desa';

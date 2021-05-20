@@ -7,7 +7,7 @@
                         <div class="box-header">
                             <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu Balita <br>desa <?php
+                                <h3 class="box-title" id="judul">Rekap Data Posyandu Balita<br> desa <?php
                                                                                                         if ($login_session['level'] == "panitia") {
                                                                                                             echo $panitia_data_login['nama_desa'];
                                                                                                         } else {
@@ -24,16 +24,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kriteria</th>
-                                            <th>Nama Peserta</th>
-                                            <th>Berat Badan</th>
-                                            <th>Tinggi Badan</th>
-                                            <th>PSG</th>
-                                            <th>Kelamin</th>
-                                            <th>Umur</th>
-                                            <th>Tahun</th>
-                                            <th>Bulan</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Balita</th>
+                                            <th>Sex</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>GKN</th>
+                                            <th>Januari</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,34 +36,26 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu_desa as $psnd) :
+                                        foreach ($rekap_balita_desa as $psnd) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $psnd->kriteria ?></td>
                                             <td><?= $psnd->nama ?></td>
-                                            <td><?= $psnd->berat_badan, ' Kg' ?></td>
-                                            <td><?= $psnd->tinggi_badan, ' Cm' ?></td>
-                                            <td><?= $psnd->PSG ?></td>
                                             <td><?= $psnd->kelamin ?></td>
-                                            <td><?php $lahir = $psnd->TTL;
-                                                    $tahun_lahir = substr($lahir, -4);
-                                                    $now = date("Y");
-                                                    (int) $tahun_lahir;
-                                                    (int) $now;
-                                                    $umur = $now - $tahun_lahir;
-                                                    echo $umur, ' Tahun'
-                                                    ?></td>
-                                            <td><?= $psnd->tahun ?></td>
-                                            <td><?= $psnd->bulan ?></td>
-                                            <td>
-                                                <a href="<?= base_url('edit-posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('posyandu/Posyandu/delete_posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-danger"
-                                                    onclick="return confirm('Yakin..?');">Hapus</a>
-                                            </td>
+                                            <td><?= $psnd->TTL ?></td>
+                                            <td></td>
+                                            <td>Umur&ensp;: <br>
+                                                BB &ensp;&ensp;&ensp;: <br>
+                                                TB &ensp;&ensp;&ensp;:
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Balita</th>
+                                            <th>Sex</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>GKN</th>
+                                        </tr>
+                                        </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>

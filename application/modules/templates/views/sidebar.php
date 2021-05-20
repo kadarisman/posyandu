@@ -40,8 +40,14 @@
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu') ?>"><i class="fa fa-database"></i>
-                    Posyandu
+                    Balita
                     <span class="pull-right-container"> <?= $total_posyandu ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('posyandu') ?>"><i class="fa fa-database"></i>
+                    Ibu Hamil
+                    <span class="pull-right-container"> <?= $total_posyandu_bumil ?>
                     </span>
                 </a>
             </li>
@@ -60,8 +66,26 @@
             </li>
 
             <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
-                    Posyandu
+                    Balita
                     <span class="pull-right-container"><?= $total_posyandu_desa ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
+                    Ibu Hamil
+                    <span class="pull-right-container"><?= $total_posyandu_bumil_desa ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('rekap-balita-desa') ?>"><i class="fa fa-list"></i>
+                    Rekap Balita
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-list"></i>
+                    Rekap Ibu Hamil
+                    <span class="pull-right-container">
                     </span>
                 </a>
             </li>
@@ -73,7 +97,13 @@
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
-                    Data Posyandu
+                    Balita
+                    <span class="pull-right-container"><?= $total_posyandu_desa ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
+                    Ibu Hamil
                     <span class="pull-right-container"><?= $total_posyandu_desa ?>
                     </span>
                 </a>
