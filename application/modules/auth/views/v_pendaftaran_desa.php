@@ -65,7 +65,7 @@
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('message1'); ?>
         <h4 style="color: white; font-weight:bold; text-align:left">Ini halaman pendafataran Desa !<br>
-            <a href="#" style="color: yellow;" id="btn">Peserta ?</a>
+            petunjuk pendaftaran Peserta klik <a href="#" style="color: yellow;" id="btn">disini?</a>
         </h4>
 
         <!-- /.login-logo -->

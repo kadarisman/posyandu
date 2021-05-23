@@ -5,14 +5,28 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
+                            <button onclick="window.print()" class="badge progress-bar-primary phide">
+                                Cetak <i class="fa fa-print" aria-hidden="true"></i></button>
+                            <form action="<?= base_url('filter-tahun-bumil') ?>" method="post" class="phide">
+                                <br>
+                                Filter Pertahun :
+                                <select name="tahun" required>
+                                    <option value="" selected disabled>Tahun</option>
+                                    <?php for ($i = date('Y'); $i >= 2015; $i--) : ?>
+                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                                <button type="submit" class="badge progress-bar-primary" id="crsmth_p">Cari</button>
+                            </form>
+
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu Balita <br>desa <?php
-                                                                                                        if ($login_session['level'] == "panitia") {
-                                                                                                            echo $panitia_data_login['nama_desa'];
-                                                                                                        } else {
-                                                                                                            echo $desa_data_login['nama_desa'];
-                                                                                                        } ?></h3>
+                                <h3 class="box-title" id="judul">Rekap Data Posyandu Ibu Hamil<br>
+                                    desa <?php
+                                            if ($login_session['level'] == "panitia") {
+                                                echo $panitia_data_login['nama_desa'];
+                                            } else {
+                                                echo $desa_data_login['nama_desa'], ' Tahun ', date('Y');
+                                            } ?></h3>
                             </center>
                             <br>
                         </div>
@@ -24,16 +38,18 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kriteria</th>
-                                            <th>Nama Peserta</th>
+                                            <th>Nama</th>
+                                            <th>Suami</th>
+                                            <th>HPHT</th>
+                                            <th>TTP</th>
+                                            <th>Umur</th>
+                                            <th>Umur Kehamilan</th>
+                                            <th>Hamil Ke</th>
                                             <th>Berat Badan</th>
                                             <th>Tinggi Badan</th>
-                                            <th>PSG</th>
-                                            <th>Kelamin</th>
-                                            <th>Umur</th>
+                                            <th>HB</th>
                                             <th>Tahun</th>
-                                            <th>Bulan</th>
-                                            <th>Aksi</th>
+                                            <th>Kunjungan Bulan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,17 +57,15 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu_desa as $psnd) :
+                                        foreach ($rekap_bumil_desa as $psnd) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $psnd->kriteria ?></td>
                                             <td><?= $psnd->nama ?></td>
-                                            <td><?= $psnd->berat_badan, ' Kg' ?></td>
-                                            <td><?= $psnd->tinggi_badan, ' Cm' ?></td>
-                                            <td><?= $psnd->PSG ?></td>
-                                            <td><?= $psnd->kelamin ?></td>
+                                            <td><?= $psnd->suami ?></td>
+                                            <td><?= $psnd->HPHT ?></td>
+                                            <td><?= $psnd->TTP ?></td>
                                             <td><?php $lahir = $psnd->TTL;
                                                     $tahun_lahir = substr($lahir, -4);
                                                     $now = date("Y");
@@ -60,17 +74,15 @@
                                                     $umur = $now - $tahun_lahir;
                                                     echo $umur, ' Tahun'
                                                     ?></td>
+                                            <td><?= $psnd->umur, ' Bulan' ?></td>
+                                            <td><?= $psnd->hamil_ke ?></td>
+                                            <td><?= $psnd->berat_badan ?></td>
+                                            <td><?= $psnd->tinggi_badan ?></td>
+                                            <td><?= $psnd->HB, ' G' ?></td>
                                             <td><?= $psnd->tahun ?></td>
                                             <td><?= $psnd->bulan ?></td>
-                                            <td>
-                                                <a href="<?= base_url('edit-posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('posyandu/Posyandu/delete_posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-danger"
-                                                    onclick="return confirm('Yakin..?');">Hapus</a>
-                                            </td>
+                                            <?php endforeach; ?>
                                         </tr>
-                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

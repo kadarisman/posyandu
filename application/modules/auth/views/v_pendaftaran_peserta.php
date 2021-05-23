@@ -19,7 +19,7 @@ body {
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('message1'); ?>
         <h4 style="color: white; font-weight:bold; text-align:left">Ini halaman pendafataran Peserta Posyandu !<br>
-            <a href="#" style="color: yellow;" id="btn_peserta">Desa ?</a>
+            petunjuk pendaftaran Desa klik <a href="#" style="color: yellow;" id="btn_peserta">disini</a>
         </h4>
 
         <!-- /.login-logo -->
@@ -77,20 +77,16 @@ body {
                     <label class="radio-inline mb-1"><input type="radio" name="kelamin" value="Wanita">Wanita</label>
                 </div>
                 <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
-                <div class="form-group">
-                    <select class="form-control border border-dark" tabindex="-1" aria-hidden="true" name="kriteria">
+                <div class="form-group" id="divkrt">
+                    <select class="form-control border border-dark" tabindex="-1" aria-hidden="true" name="kriteria"
+                        id="slctkrt">
                         <option selected="true" disabled="disabled">Kriteria</option>
                         <option value="Ibu Hamil">Ibu Hamil</option>
                         <option value="Balita">Balita</option>
                     </select>
                     <?= form_error('kriteria', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Nama ibu" name="nama_ibu" id="nama_ibu"
-                        value="<?= set_value('nama_ibu'); ?>">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    <?= form_error('nama_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
-                </div>
+
                 <div class="social-auth-links text-center">
                     <button type="submit" class="btn btn-block btn-primary">Daftar</button>
                     <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->

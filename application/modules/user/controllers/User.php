@@ -414,9 +414,9 @@ class User extends CI_Controller
             'required' => 'Kriteria harus di pilih..!'
         ]);
 
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
+        // $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+        //     'required' => 'Nama ibu tidak boleh kosong..!'
+        // ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Pendaftaran Peserta';
@@ -450,6 +450,7 @@ class User extends CI_Controller
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'nama_ibu' => htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' => htmlspecialchars($this->input->post('suami', true)),
                 'level'  => 'peserta',
                 'is_active' => 1,
                 'created' => date('d-m-Y H:i:s')
@@ -556,9 +557,9 @@ class User extends CI_Controller
             'required' => 'Kriteria harus di pilih..!'
         ]);
 
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
+        // $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+        //     'required' => 'Nama ibu tidak boleh kosong..!'
+        // ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah Peserta';
@@ -589,6 +590,7 @@ class User extends CI_Controller
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'nama_ibu' => htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' => htmlspecialchars($this->input->post('suami', true)),
                 'level'  => 'peserta',
                 'is_active' => 1,
                 'created' => date('d-m-Y H:i:s')
@@ -664,9 +666,9 @@ class User extends CI_Controller
         $this->form_validation->set_rules('t_lahir', 'Nama', 'required|trim', [
             'required' => 'Tempat Lahir tidak boleh kosong..!'
         ]);
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
+        // $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+        //     'required' => 'Nama ibu tidak boleh kosong..!'
+        // ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Pengguna';
@@ -696,6 +698,7 @@ class User extends CI_Controller
                 't_lahir' => htmlspecialchars($this->input->post('t_lahir', true)),
                 'TTL' => htmlspecialchars($this->input->post('TTL', true)),
                 'nama_ibu' =>  htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' =>  htmlspecialchars($this->input->post('suami', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
@@ -815,9 +818,9 @@ class User extends CI_Controller
         $this->form_validation->set_rules('t_lahir', 'Nama', 'required|trim', [
             'required' => 'Tempat Lahir tidak boleh kosong..!'
         ]);
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
+        // $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+        //     'required' => 'Nama ibu tidak boleh kosong..!'
+        // ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Peserta';
@@ -843,6 +846,7 @@ class User extends CI_Controller
                 't_lahir' => htmlspecialchars($this->input->post('t_lahir', true)),
                 'TTL' => htmlspecialchars($this->input->post('TTL', true)),
                 'nama_ibu' =>  htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' =>  htmlspecialchars($this->input->post('suami', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'id_desa' => htmlspecialchars($this->input->post('id_desa', true)),
@@ -906,12 +910,12 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nik', 'Nik', 'required|trim', [
             'required' => 'Nik tidak boleh kosong..!'
         ]);
-        $this->form_validation->set_rules('t_lahir', 'Nama', 'required|trim', [
+        $this->form_validation->set_rules('t_lahir', 'T_lahir', 'required|trim', [
             'required' => 'Tempat Lahir tidak boleh kosong..!'
         ]);
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
+        // $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
+        //     'required' => 'Nama ibu tidak boleh kosong..!'
+        // ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Profil';
@@ -938,6 +942,7 @@ class User extends CI_Controller
                 't_lahir' => htmlspecialchars($this->input->post('t_lahir', true)),
                 'TTL' => htmlspecialchars($this->input->post('TTL', true)),
                 'nama_ibu' =>  htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' =>  htmlspecialchars($this->input->post('suami', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'modifed' => date('d-m-Y H:i:s')

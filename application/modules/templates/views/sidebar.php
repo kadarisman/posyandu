@@ -71,7 +71,7 @@
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
+            <li><a href="<?= base_url('posyandu-desa-bumil') ?>"><i class="fa fa-database"></i>
                     Ibu Hamil
                     <span class="pull-right-container"><?= $total_posyandu_bumil_desa ?>
                     </span>
@@ -83,7 +83,7 @@
                     </span>
                 </a>
             </li>
-            <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-list"></i>
+            <li><a href="<?= base_url('rekap-bumil-desa') ?>"><i class="fa fa-list"></i>
                     Rekap Ibu Hamil
                     <span class="pull-right-container">
                     </span>

@@ -154,9 +154,6 @@ class Login extends CI_Controller
             'required' => 'Kriteria harus di pilih..!'
         ]);
 
-        $this->form_validation->set_rules('nama_ibu', 'Nama_ibu', 'required|trim', [
-            'required' => 'Nama ibu tidak boleh kosong..!'
-        ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Pendaftaran Peserta';
@@ -174,6 +171,7 @@ class Login extends CI_Controller
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'nama_ibu' => htmlspecialchars($this->input->post('nama_ibu', true)),
+                'suami' => htmlspecialchars($this->input->post('suami', true)),
                 'level' => 'peserta',
                 'is_active' => 1,
                 'created' => date('d-m-Y H:i:s')

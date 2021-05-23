@@ -40,46 +40,48 @@
                                 <?= form_error('umur', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" placeholder="Berat Badan" name="berat_badan"
-                                    value="<?= set_value('berat_badan'); ?>">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="berat_badan">
+                                    <option selected="true" disabled="disabled">Berat Badan</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Kurus">Kurus</option>
+                                    <option value="Sangat Kurus">Sangat Kurus</option>
+                                    <option value="Gemuk">Gemuk</option>
+                                </select>
                                 <?= form_error('berat_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" placeholder="Tinggi Badan" name="tinggi_badan"
-                                    value="<?= set_value('tinggi_badan'); ?>">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="tinggi_badan">
+                                    <option selected="true" disabled="disabled">Tinggi Badan</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Pendek">Pendek</option>
+                                    <option value="Sangat Pendek">Sangat Pendek</option>
+                                    <option value="Tinggi">Tinggi</option>
+                                </select>
                                 <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="PSG">
-                                    <option selected="true" disabled="disabled">Pilih PSG</option>
+                                    <option selected="true" disabled="disabled">Isi PSG</option>
                                     <option value="Baik">Baik</option>
-                                    <option value="Kurang baik">Kurang baik</option>
-                                    <option value="Sangat kurang">Sangat kurang</option>
+                                    <option value="Lebih">Lebih</option>
+                                    <option value="Kurang">Kurang</option>
                                     <option value="Buruk">Buruk</option>
                                 </select>
                                 <?= form_error('PSG', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
-                                    name="bulan">
-                                    <option selected="true" disabled="disabled">Pilih Bulan</option>
-                                    <option value="Januari">Januari</option>
-                                    <option value="Februari">Februari</option>
-                                    <option value="Maret">Maret</option>
-                                    <option value="April">April</option>
-                                    <option value="Mei">Mei</option>
-                                    <option value="Juni">Juni</option>
-                                    <option value="Juli">Juli</option>
-                                    <option value="Agustus">Agustus</option>
-                                    <option value="September">September</option>
-                                    <option value="Oktober">Oktober</option>
-                                    <option value="November">November</option>
-                                    <option value="Desember">Desember</option>
+                                    name="GKN">
+                                    <option selected="true" disabled="disabled">Isi GKN</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Lebih">Lebih</option>
+                                    <option value="Kurang">Kurang</option>
+                                    <option value="Buruk">Buruk</option>
                                 </select>
-                                <?= form_error('PSG', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?= form_error('GKN', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>

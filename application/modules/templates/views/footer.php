@@ -52,10 +52,16 @@ $(function() {
         'searching': true,
         'ordering': true,
         'info': true,
-        'autoWidth': true
+        'autoWidth': false
     })
-})
+});
+$("#datepicker, #datepicker2").datepicker({});
 </script>
+<!-- <script>
+$(document).ready(function() {
+    $('#example1').DataTable();
+});
+</script> -->
 <script>
 $(document).ready(function() {
     $('.chck').click(function() {
@@ -86,6 +92,27 @@ $(document).ready(function() {
 $(function() {
     $('#datepicker').datepicker({
         autoclose: true
+    })
+})
+</script>
+<script>
+$(document).ready(function() {
+    $("#slctkrt").change(function() {
+        if ($(this).val() == "Ibu Hamil") {
+            $('#divkrt').after(
+                '<div class="form-group has-feedback suami"><input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami" required><span class="glyphicon glyphicon-user form-control-feedback"></span></div>'
+            )
+            $('[name ="nama_ibu"]').remove();
+        } else if ($(this).val() == "Balita") {
+            $('#divkrt').after(
+                '<div class="form-group has-feedback ibu"><input type="text" class="form-control" placeholder="Nama Ibu" name="nama_ibu" id="nama_ibu" required><span class="glyphicon glyphicon-user form-control-feedback"></span></div>'
+            )
+            $('[name ="suami"]').remove();
+        } else {
+            $('[name="nama_ibu"]').remove();
+            $('[name ="suami"]').remove();
+        }
+        $("#divkrt").trigger("change");
     })
 })
 </script>

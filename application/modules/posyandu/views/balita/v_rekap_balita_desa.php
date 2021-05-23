@@ -5,14 +5,28 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
+                            <button onclick="window.print()" class="badge progress-bar-primary phide">
+                                Cetak <i class="fa fa-print" aria-hidden="true"></i></button>
+                            <form action="<?= base_url('filter-tahun') ?>" method="post" class="phide">
+                                <br>
+                                Filter Pertahun :
+                                <select name="tahun" required>
+                                    <option value="" selected disabled>Tahun</option>
+                                    <?php for ($i = date('Y'); $i >= 2015; $i--) : ?>
+                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                                <button type="submit" class="badge progress-bar-primary" id="crsmth_p">Cari</button>
+                            </form>
+
                             <center>
-                                <h3 class="box-title" id="judul">Rekap Data Posyandu Balita<br> desa <?php
-                                                                                                        if ($login_session['level'] == "panitia") {
-                                                                                                            echo $panitia_data_login['nama_desa'];
-                                                                                                        } else {
-                                                                                                            echo $desa_data_login['nama_desa'];
-                                                                                                        } ?></h3>
+                                <h3 class="box-title" id="judul">Rekap Data Posyandu Balita<br>
+                                    desa <?php
+                                            if ($login_session['level'] == "panitia") {
+                                                echo $panitia_data_login['nama_desa'];
+                                            } else {
+                                                echo $desa_data_login['nama_desa'], ' Tahun ', date('Y');
+                                            } ?></h3>
                             </center>
                             <br>
                         </div>
@@ -28,7 +42,11 @@
                                             <th>Sex</th>
                                             <th>Tanggal Lahir</th>
                                             <th>GKN</th>
-                                            <th>Januari</th>
+                                            <th>Umur</th>
+                                            <th>Berat Badan</th>
+                                            <th>Tinggi Badan</th>
+                                            <th>PSG</th>
+                                            <th>Bulan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,20 +62,14 @@
                                             <td><?= $psnd->nama ?></td>
                                             <td><?= $psnd->kelamin ?></td>
                                             <td><?= $psnd->TTL ?></td>
-                                            <td></td>
-                                            <td>Umur&ensp;: <br>
-                                                BB &ensp;&ensp;&ensp;: <br>
-                                                TB &ensp;&ensp;&ensp;:
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Balita</th>
-                                            <th>Sex</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>GKN</th>
+                                            <td><?= $psnd->GKN ?></td>
+                                            <td><?= $psnd->umur, ' Bulan' ?></td>
+                                            <td><?= $psnd->berat_badan ?></td>
+                                            <td><?= $psnd->tinggi_badan ?></td>
+                                            <td><?= $psnd->PSG ?></td>
+                                            <td><?= $psnd->bulan ?></td>
+                                            <?php endforeach; ?>
                                         </tr>
-                                        </td>
-                                        </tr>
-                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

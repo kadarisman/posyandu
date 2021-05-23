@@ -78,13 +78,20 @@
                                                                                                                     } ?>>Wanita</label>
                             </div>
                             <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <?php if ($user_peserta->kriteria == 'Ibu Hamil') { ?>
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami"
+                                    value="<?= $user_peserta->suami ?>">
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            </div>
+                            <?php } else { ?>
                             <label>Ibu</label>
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Nama ibu" name="nama_ibu"
                                     id="nama_ibu" value="<?= $user_peserta->nama_ibu ?>">
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                <?= form_error('nama_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+                            <?php } ?>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="<?= base_url('peserta') ?>" class="btn btn-primary">Batal</a>

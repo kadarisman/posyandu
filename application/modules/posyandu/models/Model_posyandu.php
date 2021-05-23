@@ -65,29 +65,36 @@ class Model_posyandu extends CI_Model
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
-        $this->db->where('user.id_desa', $desa, 'user.kriteria', 'Balita');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita');
+        $this->db->where($where);
         $this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
     public function rekap_balita_desa()
     {
+        $tahun = date('Y');
         $desa = $this->session->userdata('id_desa');
         $this->db->select('*');
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
-        $this->db->where('user.id_desa', $desa, 'user.kriteria', 'balita');
-        $this->db->order_by('tahun', 'asc');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
-    public function rekap_balita_desa_group()
+
+    public function rekap_bumil_desa()
     {
+        $tahun = date('Y');
         $desa = $this->session->userdata('id_desa');
         $this->db->select('*');
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
-        $this->db->where('user.id_desa', $desa, 'user.kriteria', 'balita');
-        $this->db->group_by('user.id_user');
-        //$this->db->group_by(array('nilai.NIDN', 'nilai.kd_matakuliah', 'nilai.smester', 'nilai.tahun_ajaran'));
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
 
@@ -113,4 +120,191 @@ class Model_posyandu extends CI_Model
     {
         $this->db->delete('posyandu', ['id_posyandu' => $id_posyandu]);
     }
+
+    public function filter_tahun_balita_desa($tahun)
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function filter_tahun_bumil_desa($tahun)
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function get_all_posyandu_bumil_desa()
+    {
+        $tahun = date('Y');
+        $desa = $this->session->userdata('id_desa');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        $this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    // public function rekap_bulan1_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Januari');
+    //     $this->db->where($where);
+    //     $this->db->group_by('posyandu.id_user');
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+
+    // public function rekap_bulan2_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Februari');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+
+    // public function rekap_bulan3_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Maret');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan4_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'April');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan5_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Mei');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan6_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Juni');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan7_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Juli');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan8_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Agustus');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan9_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'September');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan10_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Oktober');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan11_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'November');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
+    // public function rekap_bulan12_desa($tahun)
+    // {
+    //     $desa = $this->session->userdata('id_desa');
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun, 'posyandu.bulan' => 'Desember');
+    //     $this->db->where($where);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->result();
+    // }
 }

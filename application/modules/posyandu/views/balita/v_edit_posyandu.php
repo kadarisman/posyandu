@@ -33,16 +33,28 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Berat Badan</label>
-                                <input type="text" class="form-control" placeholder="Berat Badan" name="berat_badan"
-                                    value="<?= $posyandu_e->berat_badan ?>">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="berat_badan">
+                                    <option value="<?= $posyandu_e->berat_badan ?>"><?= $posyandu_e->berat_badan ?>
+                                    </option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Kurus">Kurus</option>
+                                    <option value="Sangat Kurus">Sangat Kurus</option>
+                                    <option value="Gemuk">Gemuk</option>
+                                </select>
                                 <?= form_error('berat_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Tinggi Badan</label>
-                                <input type="text" class="form-control" placeholder="Tinggi Badan" name="tinggi_badan"
-                                    value="<?= $posyandu_e->tinggi_badan ?>">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="tinggi_badan">
+                                    <option value="<?= $posyandu_e->tinggi_badan ?>"><?= $posyandu_e->tinggi_badan ?>
+                                    </option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Pendek">Pendek</option>
+                                    <option value="Sangat Pendek">Sangat Pendek</option>
+                                    <option value="Tinggi">Tinggi</option>
+                                </select>
                                 <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
@@ -58,24 +70,28 @@
                                 <?= form_error('PSG', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <label>Bulan</label>
+                                <label>GKN</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
-                                    name="bulan">
-                                    <option value="<?= $posyandu_e->bulan ?>"><?= $posyandu_e->bulan ?></option>
-                                    <option value="Januari">Januari</option>
-                                    <option value="Februari">Februari</option>
-                                    <option value="Maret">Maret</option>
-                                    <option value="April">April</option>
-                                    <option value="Mei">Mei</option>
-                                    <option value="Juni">Juni</option>
-                                    <option value="Juli">Juli</option>
-                                    <option value="Agustus">Agustus</option>
-                                    <option value="September">September</option>
-                                    <option value="Oktober">Oktober</option>
-                                    <option value="November">November</option>
-                                    <option value="Desember">Desember</option>
+                                    name="GKN">
+                                    <option value="<?= $posyandu_e->GKN ?>"><?= $posyandu_e->GKN ?></option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Lebih">Lebih</option>
+                                    <option value="Kurang">Kurang</option>
+                                    <option value="Buruk">Buruk</option>
                                 </select>
-                                <?= form_error('PSG', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?= form_error('GKN', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Umur</label>
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="umur">
+                                    <option value="<?= $posyandu_e->umur ?>"><?= $posyandu_e->umur ?>
+                                    </option>
+                                    <?php for ($i = 0; $i <= 48; $i++) : ?>
+                                    <option value="<?= $i ?>"><?= $i, ' Bulan' ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                                <?= form_error('umur', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>

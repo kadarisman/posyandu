@@ -66,7 +66,7 @@
                 <?= $desa->nama_desa; ?>..</h2>
             <p style="color: white; font-weight:bold;">Sistem Informasi Posyandu Kabupaten Bireuen </p>
             <p><a class="btn btn-default" href="<?= base_url('pendaftaran-peserta/' . $desa->id_desa) ?>"
-                    role="button">Daftar
+                    role="button">Pendaftaran
                     Posyandu <?= $desa->nama_desa; ?></a>
                 <a class="btn btn-default" href="<?= base_url('beranda') ?>" role="button">Beranda</a>
 

@@ -7,7 +7,12 @@
                         <div class="box-header">
                             <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu</h3>
+                                <h3 class="box-title" id="judul">Semua Data Posyandu Balita <br>desa <?php
+                                                                                                        if ($login_session['level'] == "panitia") {
+                                                                                                            echo $panitia_data_login['nama_desa'];
+                                                                                                        } else {
+                                                                                                            echo $desa_data_login['nama_desa'];
+                                                                                                        } ?></h3>
                             </center>
                             <br>
                         </div>
@@ -19,16 +24,15 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kriteria</th>
-                                            <th>Desa</th>
                                             <th>Nama Peserta</th>
                                             <th>Berat Badan</th>
                                             <th>Tinggi Badan</th>
                                             <th>PSG</th>
+                                            <th>GKN</th>
                                             <th>Kelamin</th>
                                             <th>Umur</th>
                                             <th>Tahun</th>
-                                            <th>Bulan</th>
+                                            <th>Kunjungan Bulan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -37,17 +41,16 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu as $psnd) :
+                                        foreach ($posyandu_desa as $psnd) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $psnd->kriteria ?></td>
-                                            <td><?= $psnd->nama_desa ?></td>
                                             <td><?= $psnd->nama ?></td>
-                                            <td><?= $psnd->berat_badan, ' Kg' ?></td>
-                                            <td><?= $psnd->tinggi_badan, ' Cm' ?></td>
+                                            <td><?= $psnd->berat_badan ?></td>
+                                            <td><?= $psnd->tinggi_badan ?></td>
                                             <td><?= $psnd->PSG ?></td>
+                                            <td><?= $psnd->GKN ?></td>
                                             <td><?= $psnd->kelamin ?></td>
                                             <td><?php $lahir = $psnd->TTL;
                                                     $tahun_lahir = substr($lahir, -4);
