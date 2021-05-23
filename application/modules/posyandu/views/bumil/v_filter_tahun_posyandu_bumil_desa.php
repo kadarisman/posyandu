@@ -7,7 +7,7 @@
                         <div class="box-header">
                             <button onclick="window.print()" class="badge progress-bar-primary phide">
                                 Cetak <i class="fa fa-print" aria-hidden="true"></i></button>
-                            <form action="<?= base_url('filter-tahun-bumil') ?>" method="post" class="phide">
+                            <form action="<?= base_url('filter-tahun-bumil-desa') ?>" method="post" class="phide">
                                 <br>
                                 Filter Pertahun :
                                 <select name="tahun" required>
@@ -92,6 +92,29 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
+                        <div class="row tndtgn">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4">
+                                <center>
+                                    <?php if ($login_session['level'] == "panitia") {
+                                        echo $panitia_data_login['nama_desa'];
+                                    } else {
+                                        echo $desa_data_login['nama_desa'], ', ';
+                                    } ?> <?php echo date('d-m-Y'); ?>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Ka Posyandu Desa <?php if ($login_session['level'] == "panitia") {
+                                                            echo $panitia_data_login['nama_desa'];
+                                                        } else {
+                                                            echo $desa_data_login['nama_desa'];
+                                                        } ?>
+                                    <br>
+                                    <br>
+                                </center>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box -->
                 </div>

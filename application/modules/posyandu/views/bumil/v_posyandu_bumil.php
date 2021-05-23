@@ -5,9 +5,10 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
+                            <a href="<?= base_url('tambah-posyandu-bumil') ?>"
+                                class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu</h3>
+                                <h3 class="box-title" id="judul">Semua Data Posyandu Ibu Hamil</h3>
                             </center>
                             <br>
                         </div>
@@ -29,7 +30,7 @@
                                             <th>Kelamin</th>
                                             <th>Umur</th>
                                             <th>Tahun</th>
-                                            <th>Bulan</th>
+                                            <th>Bulan Kunjungan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -38,7 +39,7 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu as $psnd) :
+                                        foreach ($posyandu_bumil as $psnd) :
                                             $no++
                                         ?>
                                         <tr>

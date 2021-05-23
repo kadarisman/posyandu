@@ -55,4 +55,61 @@
         background-color: #DCDCDC
     }
     </style>
+    <style>
+    @media print {
+        .phide {
+            display: none;
+        }
+    }
+
+    .tndtgn {
+        display: none;
+    }
+
+    .logo1 {
+        display: none;
+    }
+
+    @media print {
+        .tndtgn {
+            display: block;
+        }
+    }
+
+    @media print {
+        .logo1 {
+            display: block;
+            float: left;
+            margin-left: 20px;
+        }
+    }
+
+    @media print {
+        #example1_length {
+            display: none;
+        }
+
+    }
+
+    @media print {
+        #example1_filter {
+            display: none;
+        }
+
+    }
+
+    @media print {
+        #example1_info {
+            display: none;
+        }
+
+    }
+
+    @media print {
+        #example1_paginate {
+            display: none;
+        }
+
+    }
+    </style>
 </head>

@@ -12,7 +12,7 @@ class Posyandu extends CI_Controller
     {
         $data['title'] = 'Posyandu';
         //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
-        $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+        $data['posyandu_balita'] = $this->Model_posyandu->get_all_posyandu_balita();
         $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['desa_data_login'] = $this->Model_login->desa_session();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -32,6 +32,33 @@ class Posyandu extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('balita/v_posyandu', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function get_all_posyandu_bumil() //balita
+    {
+        $data['title'] = 'Posyandu';
+        //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
+        $data['posyandu_bumil'] = $this->Model_posyandu->get_all_posyandu_bumil();
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+        $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita        
+        $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+        // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+        $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+        $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+        $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('bumil/v_posyandu_bumil', $data);
         $this->load->view('templates/footer');
     }
 
@@ -85,7 +112,7 @@ class Posyandu extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah Posyandu';
             //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
-            $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+            //$data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -105,6 +132,8 @@ class Posyandu extends CI_Controller
             $data['user_peserta_desa_bumil'] = $this->Model_user->get_all_user_peserta_desa_bumil();
             $data['user_peserta_balita'] = $this->Model_user->get_all_user_peserta_balita();
             $data['user_peserta_bumil'] = $this->Model_user->get_all_user_peserta_bumil();
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
@@ -155,7 +184,7 @@ class Posyandu extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Posyandu';
             //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
-            $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+            // $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -225,6 +254,38 @@ class Posyandu extends CI_Controller
         }
     }
 
+    public function rekap_balita()
+    {
+        $data['title'] = 'Rekap Posyandu';
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['rekap_balita'] = $this->Model_posyandu->rekap_balita();
+        //$data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
+        //$data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
+        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+        $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+        $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+        $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+        $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+        $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+        $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
+
+
+        $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita        
+        $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('balita/v_rekap_balita', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function rekap_balita_desa()
     {
         $data['title'] = 'Rekap Posyandu';
@@ -253,7 +314,45 @@ class Posyandu extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function filter_tahun_balita()
+    {
+        $data['title'] = 'Filter Posyandu';
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['rekap_balita'] = $this->Model_posyandu->rekap_balita();
+        // $data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
+        // $data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
+        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+        $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+        $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+        $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+        $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+        $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+        $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
 
+
+        $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita        
+        $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+
+
+
+        $tahun = $this->input->post('tahun', true);
+
+
+        $data['filter_tahun1'] = $this->Model_posyandu->filter_tahun_balita($tahun);
+        $data['th'] = $tahun;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('balita/v_filter_tahun_posyandu', $data);
+        $this->load->view('templates/footer');
+    }
     public function filter_tahun_balita_desa()
     {
         $data['title'] = 'Filter Posyandu';
@@ -346,7 +445,7 @@ class Posyandu extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah Posyandu';
             //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
-            $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+            //       $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -366,6 +465,8 @@ class Posyandu extends CI_Controller
             $data['user_peserta_desa_bumil'] = $this->Model_user->get_all_user_peserta_desa_bumil();
             $data['user_peserta_balita'] = $this->Model_user->get_all_user_peserta_balita();
             $data['user_peserta_bumil'] = $this->Model_user->get_all_user_peserta_bumil();
+
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -425,7 +526,7 @@ class Posyandu extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Posyandu';
             //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
-            $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+            // $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -474,7 +575,36 @@ class Posyandu extends CI_Controller
             }
         }
     }
+    public function rekap_bumil()
+    {
+        $data['title'] = 'Rekap Posyandu';
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['rekap_bumil'] = $this->Model_posyandu->rekap_bumil();
+        //$data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
+        //$data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
+        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+        $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+        $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+        $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+        $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+        $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+        $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
 
+        $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita        
+        $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('bumil/v_rekap_ibu_hamil', $data);
+        $this->load->view('templates/footer');
+    }
     public function rekap_bumil_desa()
     {
         $data['title'] = 'Rekap Posyandu';
@@ -500,6 +630,44 @@ class Posyandu extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('bumil/v_rekap_ibu_hamil_desa', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function filter_tahun_bumil()
+    {
+        $data['title'] = 'Filter Posyandu';
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['rekap_balita_desa'] = $this->Model_posyandu->rekap_balita_desa();
+        // $data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
+        // $data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
+        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+        $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+        $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+        $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+        $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+        $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+        $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+        $data['total_desa'] = $this->Model_desa->count_all_desa();
+
+        $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita        
+        $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+
+
+        $tahun = $this->input->post('tahun', true);
+
+
+        $data['filter_bumil_tahun1'] = $this->Model_posyandu->filter_tahun_bumil($tahun);
+        $data['th'] = $tahun;
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('bumil/v_filter_tahun_posyandu_bumil', $data);
         $this->load->view('templates/footer');
     }
 

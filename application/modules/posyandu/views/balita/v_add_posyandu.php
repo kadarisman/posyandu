@@ -22,7 +22,7 @@
                                     <option value="<?= $psrt->id_user ?>"><?= $psrt->nama ?></option>
                                     <?php endforeach; ?>
                                     <?php } else { ?>
-                                    <?php foreach ($user_peserta as $psrt1) : ?>
+                                    <?php foreach ($user_peserta_balita as $psrt1) : ?>
                                     <option value="<?= $psrt1->id_user ?>"><?= $psrt1->nama ?></option>
                                     <?php endforeach; ?>
                                     <?php } ?>

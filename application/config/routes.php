@@ -51,12 +51,18 @@ $route['tambah-posyandu'] = 'posyandu/Posyandu/add_posyandu';
 $route['edit-posyandu/(:any)'] = 'posyandu/Posyandu/edit_posyandu/$1';
 
 
+$route['rekap-balita'] = 'posyandu/Posyandu/rekap_balita';
 $route['rekap-balita-desa'] = 'posyandu/Posyandu/rekap_balita_desa';
-$route['filter-tahun'] = 'posyandu/Posyandu/filter_tahun_balita_desa';
+$route['filter-tahun-balita'] = 'posyandu/Posyandu/filter_tahun_balita';
+$route['filter-tahun-balita-desa'] = 'posyandu/Posyandu/filter_tahun_balita_desa';
 
 //bumil
+$route['posyandu-bumil'] = 'posyandu/Posyandu/get_all_posyandu_bumil';
 $route['posyandu-desa-bumil'] = 'posyandu/Posyandu/get_posyandu_bumil_desa';
 $route['tambah-posyandu-bumil'] = 'posyandu/Posyandu/add_posyandu_bumil';
 $route['edit-posyandu-bumil/(:any)'] = 'posyandu/Posyandu/edit_posyandu_bumil/$1';
+
 $route['rekap-bumil-desa'] = 'posyandu/Posyandu/rekap_bumil_desa';
-$route['filter-tahun-bumil'] = 'posyandu/Posyandu/filter_tahun_bumil_desa';
+$route['filter-tahun-bumil-desa'] = 'posyandu/Posyandu/filter_tahun_bumil_desa';
+$route['rekap-bumil'] = 'posyandu/Posyandu/rekap_bumil';
+$route['filter-tahun-bumil'] = 'posyandu/Posyandu/filter_tahun_bumil';

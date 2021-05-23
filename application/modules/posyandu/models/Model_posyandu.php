@@ -48,12 +48,23 @@ class Model_posyandu extends CI_Model
         // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
         return $this->db->count_all_results();
     }
-    public function get_all_posyandu()
+    public function get_all_posyandu_balita()
     {
         $this->db->select('*');
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->where('user.kriteria', 'Balita');
+        $this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+    public function get_all_posyandu_bumil()
+    {
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $this->db->where('user.kriteria', 'Ibu Hamil');
         $this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
@@ -70,6 +81,20 @@ class Model_posyandu extends CI_Model
         $this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
+
+    public function rekap_balita()
+    {
+        $tahun = date('Y');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
     public function rekap_balita_desa()
     {
         $tahun = date('Y');
@@ -78,6 +103,20 @@ class Model_posyandu extends CI_Model
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
         $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function rekap_bumil()
+    {
+        $tahun = date('Y');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
         $this->db->where($where);
         //$this->db->group_by(array('posyandu.id_user'));
         //$this->db->order_by('tahun', 'asc');
@@ -121,6 +160,19 @@ class Model_posyandu extends CI_Model
         $this->db->delete('posyandu', ['id_posyandu' => $id_posyandu]);
     }
 
+    public function filter_tahun_balita($tahun)
+    {
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
     public function filter_tahun_balita_desa($tahun)
     {
         $desa = $this->session->userdata('id_desa');
@@ -128,6 +180,19 @@ class Model_posyandu extends CI_Model
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
         $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Balita', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        //$this->db->group_by(array('posyandu.id_user'));
+        //$this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function filter_tahun_bumil($tahun)
+    {
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
         $this->db->where($where);
         //$this->db->group_by(array('posyandu.id_user'));
         //$this->db->order_by('tahun', 'asc');
