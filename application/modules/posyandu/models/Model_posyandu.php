@@ -48,6 +48,16 @@ class Model_posyandu extends CI_Model
         // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
         return $this->db->count_all_results();
     }
+    public function count_data_posyandu_ku() //bumil
+    {
+        $user = $this->session->userdata('id_user');
+        $this->db->from('posyandu');
+        //$this->db->join('dosen', 'dosen.NIDN = nilai.NIDN', 'left');
+        $this->db->join('user', 'user.id_user=posyandu.id_user', 'left');
+        $this->db->where('posyandu.id_user', $user);
+        // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+        return $this->db->count_all_results();
+    }
     public function get_all_posyandu_balita()
     {
         $this->db->select('*');
@@ -55,6 +65,16 @@ class Model_posyandu extends CI_Model
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
         $this->db->where('user.kriteria', 'Balita');
+        $this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+    public function get_all_posyandu_ku()
+    {
+        $user = $this->session->userdata('id_user');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->where('user.id_user', $user);
         $this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }

@@ -41,7 +41,9 @@ class Login extends CI_Controller
                 $data = [
                     'username' => $user['username'],
                     'level' => $user['level'],
-                    'id_desa' => $user['id_desa']
+                    'id_desa' => $user['id_desa'],
+                    'id_user' => $user['id_user'],
+                    'kriteria' => $user['kriteria']
                 ];
                 $this->session->set_userdata($data);
                 if ($user['level'] == 'admin' || $user['level'] == 'desa' || $user['level'] == 'panitia' || $user['level'] == 'peserta') {

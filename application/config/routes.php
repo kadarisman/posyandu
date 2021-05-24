@@ -66,3 +66,5 @@ $route['rekap-bumil-desa'] = 'posyandu/Posyandu/rekap_bumil_desa';
 $route['filter-tahun-bumil-desa'] = 'posyandu/Posyandu/filter_tahun_bumil_desa';
 $route['rekap-bumil'] = 'posyandu/Posyandu/rekap_bumil';
 $route['filter-tahun-bumil'] = 'posyandu/Posyandu/filter_tahun_bumil';
+
+$route['posyandu-ku'] = 'posyandu/Posyandu/get_posyandu_ku';

@@ -133,9 +133,9 @@
                 </a>
             </li>
             <?php } else { ?>
-            <li><a href="<?= base_url('User/all_user') ?>"><i class="fa fa-database"></i>
-                    Tidak ada data
-                    <span class="pull-right-container">0
+            <li><a href="<?= base_url('posyandu-ku') ?>"><i class="fa fa-database"></i>
+                    Posyandu
+                    <span class="pull-right-container"><?= $total_posyandu_ku ?>
                     </span>
                 </a>
             </li>

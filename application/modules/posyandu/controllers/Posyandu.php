@@ -705,4 +705,24 @@ class Posyandu extends CI_Controller
         $this->load->view('bumil/v_filter_tahun_posyandu_bumil_desa', $data);
         $this->load->view('templates/footer');
     }
+
+    public function get_posyandu_ku()
+    {
+        $data['title'] = 'Posyandu';
+        $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['desa_data_login'] = $this->Model_login->desa_session();
+        $data['rekap_balita_desa'] = $this->Model_posyandu->rekap_balita_desa();
+
+        $data['total_posyandu_ku'] = $this->Model_posyandu->count_data_posyandu_ku();
+        $data['posyandu_ku'] = $this->Model_posyandu->get_all_posyandu_ku();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        if ($this->session->userdata('kriteria') == 'Balita') {
+            $this->load->view('v_posyandu_ku_balita', $data);
+        } else {
+            $this->load->view('v_posyandu_ku_bumil', $data);
+        }
+        $this->load->view('templates/footer');
+    }
 }

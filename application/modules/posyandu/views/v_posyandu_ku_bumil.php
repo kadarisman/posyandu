@@ -5,16 +5,14 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <a href="<?= base_url('tambah-posyandu-bumil') ?>"
-                                class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Data Posyandu Ibu Hamil</h3>
+                                <h3 class="box-title" id="judul">Semua Data Posyandu Kehamilan
+                                    <?= $login_session['nama']; ?></h3>
                             </center>
                             <br>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <?= $this->session->flashdata('message1'); ?>
                             <div class="table-responsive">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -32,7 +30,6 @@
                                             <th>HB</th>
                                             <th>Tahun</th>
                                             <th>Kunjungan Bulan</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,7 +37,7 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu_bumil as $psnd) :
+                                        foreach ($posyandu_ku as $psnd) :
                                             $no++
                                         ?>
                                         <tr>
@@ -64,13 +61,6 @@
                                             <td><?= $psnd->HB, ' G' ?></td>
                                             <td><?= $psnd->tahun ?></td>
                                             <td><?= $psnd->bulan ?></td>
-                                            <td>
-                                                <a href="<?= base_url('edit-posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('posyandu/Posyandu/delete_posyandu/' . $psnd->id_posyandu) ?>"
-                                                    class="badge progress-bar-danger"
-                                                    onclick="return confirm('Yakin..?');">Hapus</a>
-                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
