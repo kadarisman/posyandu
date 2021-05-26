@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2021 at 11:20 AM
+-- Generation Time: May 26, 2021 at 07:44 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.1.29
 
@@ -66,6 +66,7 @@ CREATE TABLE `posyandu` (
   `TTP` varchar(30) DEFAULT NULL,
   `hamil_ke` varchar(15) DEFAULT NULL,
   `HB` varchar(30) DEFAULT NULL,
+  `kunjungan_ke` varchar(4) DEFAULT NULL,
   `tahun` varchar(20) NOT NULL,
   `bulan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -74,12 +75,13 @@ CREATE TABLE `posyandu` (
 -- Dumping data for table `posyandu`
 --
 
-INSERT INTO `posyandu` (`id_posyandu`, `id_user`, `berat_badan`, `tinggi_badan`, `umur`, `PSG`, `GKN`, `HPHT`, `TTP`, `hamil_ke`, `HB`, `tahun`, `bulan`) VALUES
-(1, 8, 'Normal', 'Normal', 20, 'Baik', 'Baik', '', '', '', '', '2021', 'January'),
-(4, 14, 'Normal', 'Normal', 21, 'Baik', 'Baik', '', '', '', '', '2021', 'January'),
-(5, 8, 'Normal', 'Normal', 21, 'Baik', 'Lebih', '', '', '', '', '2021', 'February'),
-(6, 14, 'Normal', 'Normal', 22, 'Baik', 'Lebih', '', '', '', '', '2021', 'February'),
-(7, 33, '55 kg', '150 cm', 3, NULL, NULL, '02/02/2021', '02/01/2021', 'II', '12.3', '2021', 'May');
+INSERT INTO `posyandu` (`id_posyandu`, `id_user`, `berat_badan`, `tinggi_badan`, `umur`, `PSG`, `GKN`, `HPHT`, `TTP`, `hamil_ke`, `HB`, `kunjungan_ke`, `tahun`, `bulan`) VALUES
+(1, 8, 'Normal', 'Normal', 20, 'Baik', 'Baik', '', '', '', '', '', '2021', 'January'),
+(4, 14, 'Normal', 'Normal', 21, 'Baik', 'Baik', '', '', '', '', '', '2021', 'January'),
+(5, 8, 'Normal', 'Normal', 21, 'Baik', 'Lebih', '', '', '', '', '', '2021', 'February'),
+(6, 14, 'Normal', 'Normal', 22, 'Baik', 'Lebih', '', '', '', '', '', '2021', 'February'),
+(17, 33, '62 kg', '150 cm', 3, NULL, NULL, '02/02/2021', '02/01/2021', 'II', '12.3', 'II', '2021', 'May'),
+(19, 34, '65 kg', '155 cm', 4, NULL, NULL, '01/20/2021', '01/21/2021', 'II', '23.2', 'IV', '2021', 'May');
 
 -- --------------------------------------------------------
 
@@ -167,7 +169,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `posyandu`
 --
 ALTER TABLE `posyandu`
-  MODIFY `id_posyandu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_posyandu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`
