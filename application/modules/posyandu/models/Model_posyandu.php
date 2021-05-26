@@ -89,6 +89,8 @@ class Model_posyandu extends CI_Model
         return $this->db->get()->result();
     }
 
+
+
     public function get_all_posyandu_balita_desa()
     {
         $desa = $this->session->userdata('id_desa');
@@ -171,10 +173,22 @@ class Model_posyandu extends CI_Model
         $this->db->select('*');
         $this->db->from('posyandu');
         $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
-        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        //$this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        //$where = array('posyandu.id_posyandu' => $id_posyandu, 'user.kriteria' => 'Balita');
         $this->db->where('posyandu.id_posyandu', $id_posyandu);
         return $this->db->get()->row();
     }
+
+    // public function get_posyandu_by_id_bumil($id_posyandu)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+    //     $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+    //     $where = array('posyandu.id_posyandu' => $id_posyandu, 'user.kriteria' => 'Ibu Hamil');
+    //     $this->db->where($where);
+    //     return $this->db->get()->row();
+    // }
     public function delete_posyandu($id_posyandu)
     {
         $this->db->delete('posyandu', ['id_posyandu' => $id_posyandu]);
@@ -219,6 +233,17 @@ class Model_posyandu extends CI_Model
         return $this->db->get()->result();
     }
 
+    // public function cari_posyandu_bumil($id_posyandu)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('posyandu');
+    //     //$where = array('posyandu.id_posyandu' => $id_posyandu);
+    //     $this->db->where('id_posyandu', $id_posyandu);
+    //     //$this->db->group_by(array('posyandu.id_user'));
+    //     //$this->db->order_by('tahun', 'asc');
+    //     return $this->db->get()->row();
+    // }
+
     public function filter_tahun_bumil_desa($tahun)
     {
         $desa = $this->session->userdata('id_desa');
@@ -242,9 +267,35 @@ class Model_posyandu extends CI_Model
         $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
         $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
         $this->db->where($where);
-        $this->db->order_by('tahun', 'asc');
+        //$this->db->order_by('tahun', 'asc');
         return $this->db->get()->result();
     }
+
+    public function get_all_posyandu_bumil_desa_group()
+    {
+        $tahun = date('Y');
+        $desa = $this->session->userdata('id_desa');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $where = array('user.id_desa' => $desa, 'user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        $this->db->group_by('posyandu.id_user', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function get_all_posyandu_bumil_group()
+    {
+        $tahun = date('Y');
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $where = array('user.kriteria' => 'Ibu Hamil', 'posyandu.tahun' => $tahun);
+        $this->db->where($where);
+        $this->db->group_by('posyandu.id_user', 'asc');
+        return $this->db->get()->result();
+    }
+
 
     // public function rekap_bulan1_desa($tahun)
     // {

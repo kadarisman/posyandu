@@ -28,6 +28,7 @@
                                             <th>Berat Badan</th>
                                             <th>Tinggi Badan</th>
                                             <th>HB</th>
+                                            <th>Kunjungan Ke</th>
                                             <th>Tahun</th>
                                             <th>Kunjungan Bulan</th>
                                         </tr>
@@ -59,6 +60,7 @@
                                             <td><?= $psnd->berat_badan ?></td>
                                             <td><?= $psnd->tinggi_badan ?></td>
                                             <td><?= $psnd->HB, ' G' ?></td>
+                                            <td><?= $psnd->kunjugan_ke ?></td>
                                             <td><?= $psnd->tahun ?></td>
                                             <td><?= $psnd->bulan ?></td>
                                         </tr>

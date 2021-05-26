@@ -94,6 +94,17 @@
                                 <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
                                 <?= form_error('HB', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+                            <div class="form-group has-feedback">
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="kunjugan_ke">
+                                    <option selected="true" disabled="disabled">Kunjugan Ke</option>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                </select>
+                                <?= form_error('kunjugan_ke', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <?php if ($login_session['level'] == "desa" || $login_session['level'] == "panitia") { ?>

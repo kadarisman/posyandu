@@ -30,8 +30,9 @@
                                             <th>Berat Badan</th>
                                             <th>Tinggi Badan</th>
                                             <th>HB</th>
+                                            <th>Kunjungan</th>
                                             <th>Tahun</th>
-                                            <th>Kunjungan Bulan</th>
+                                            <th>Kegiatan Bulan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -40,16 +41,16 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($posyandu_bumil as $psnd) :
+                                        foreach ($posyandu_bumil as $psnd_bumil) :
                                             $no++
                                         ?>
                                         <tr>
                                             <td><?= $no ?></td>
-                                            <td><?= $psnd->nama ?></td>
-                                            <td><?= $psnd->suami ?></td>
-                                            <td><?= $psnd->HPHT ?></td>
-                                            <td><?= $psnd->TTP ?></td>
-                                            <td><?php $lahir = $psnd->TTL;
+                                            <td><?= $psnd_bumil->nama ?></td>
+                                            <td><?= $psnd_bumil->suami ?></td>
+                                            <td><?= $psnd_bumil->HPHT ?></td>
+                                            <td><?= $psnd_bumil->TTP ?></td>
+                                            <td><?php $lahir = $psnd_bumil->TTL;
                                                     $tahun_lahir = substr($lahir, -4);
                                                     $now = date("Y");
                                                     (int) $tahun_lahir;
@@ -57,17 +58,18 @@
                                                     $umur = $now - $tahun_lahir;
                                                     echo $umur, ' Tahun'
                                                     ?></td>
-                                            <td><?= $psnd->umur, ' Bulan' ?></td>
-                                            <td><?= $psnd->hamil_ke ?></td>
-                                            <td><?= $psnd->berat_badan ?></td>
-                                            <td><?= $psnd->tinggi_badan ?></td>
-                                            <td><?= $psnd->HB, ' G' ?></td>
-                                            <td><?= $psnd->tahun ?></td>
-                                            <td><?= $psnd->bulan ?></td>
+                                            <td><?= $psnd_bumil->umur, ' Bulan' ?></td>
+                                            <td><?= $psnd_bumil->hamil_ke ?></td>
+                                            <td><?= $psnd_bumil->berat_badan ?></td>
+                                            <td><?= $psnd_bumil->tinggi_badan ?></td>
+                                            <td><?= $psnd_bumil->HB, ' G' ?></td>
+                                            <td><?= 'Ke ', $psnd_bumil->kunjungan_ke ?></td>
+                                            <td><?= $psnd_bumil->tahun ?></td>
+                                            <td><?= $psnd_bumil->bulan ?></td>
                                             <td>
-                                                <a href="<?= base_url('edit-posyandu/' . $psnd->id_posyandu) ?>"
+                                                <a href="<?= base_url('edit-posyandu-bumil/' . $psnd_bumil->id_posyandu) ?>"
                                                     class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('posyandu/Posyandu/delete_posyandu/' . $psnd->id_posyandu) ?>"
+                                                <a href="<?= base_url('posyandu/Posyandu/delete_posyandu/' . $psnd_bumil->id_posyandu) ?>"
                                                     class="badge progress-bar-danger"
                                                     onclick="return confirm('Yakin..?');">Hapus</a>
                                             </td>
@@ -78,10 +80,53 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
+
+
+
+
+                        <div class="box-body" style="width: 50%;">
+                            <div class="box-header">
+                                <center>
+                                    <h3 class="box-title" id="judul">Posyandu Lanjutan Ibu Hamil</h3>
+                                </center>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="example2" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Suami</th>
+                                            <th>Tambah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php //var_dump($all_admin); 
+                                        ?>
+                                        <?php
+                                        $no = 0;
+                                        foreach ($cari_posyandu_bumil as $psnd_bumil) :
+                                            $no++
+                                        ?>
+                                        <tr>
+                                            <td><?= $no ?></td>
+                                            <td><?= $psnd_bumil->nama ?></td>
+                                            <td><?= $psnd_bumil->suami ?></td>
+                                            <td>
+                                                <a href="<?= base_url('tambah-posyandu-lanjutan/' . $psnd_bumil->id_posyandu) ?>"
+                                                    class="badge progress-bar-success"> <span
+                                                        class="glyphicon glyphicon glyphicon-arrow-right"></span></a>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
                     </div>
-                    <!-- /.box -->
                 </div>
-                <!-- /.col -->
+                <!-- /.box -->
             </div>
         </div>
         <!-- /.row -->

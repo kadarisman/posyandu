@@ -85,7 +85,7 @@
                                 <label>Umur</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="umur">
-                                    <option value="<?= $posyandu_e->umur ?>"><?= $posyandu_e->umur ?>
+                                    <option value="<?= $posyandu_e->umur ?>"><?= $posyandu_e->umur, ' Bulan' ?>
                                     </option>
                                     <?php for ($i = 0; $i <= 48; $i++) : ?>
                                     <option value="<?= $i ?>"><?= $i, ' Bulan' ?></option>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <?php if ($login_session['level'] == "desa" && $login_session['level'] == "panitia") { ?>
+                                <?php if ($login_session['level'] == "desa" || $login_session['level'] == "panitia") { ?>
                                 <a href="<?= base_url('posyandu-desa') ?>" class="btn btn-primary">Batal</a>
                                 <?php } else { ?>
                                 <a href="<?= base_url('posyandu') ?>" class="btn btn-primary">Batal</a>

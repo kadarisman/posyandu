@@ -55,6 +55,9 @@ class Posyandu extends CI_Controller
         $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
         $data['total_desa'] = $this->Model_desa->count_all_desa();
 
+
+        $data['cari_posyandu_bumil'] = $this->Model_posyandu->get_all_posyandu_bumil_group();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -204,6 +207,9 @@ class Posyandu extends CI_Controller
             $data['user_peserta_desa_bumil'] = $this->Model_user->get_all_user_peserta_desa_bumil();
             $data['user_peserta_balita'] = $this->Model_user->get_all_user_peserta_balita();
             $data['user_peserta_bumil'] = $this->Model_user->get_all_user_peserta_bumil();
+
+
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
 
             $data['posyandu_e'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
 
@@ -408,6 +414,10 @@ class Posyandu extends CI_Controller
         $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
         $data['total_desa'] = $this->Model_desa->count_all_desa();
 
+
+        $data['cari_posyandu_bumil_desa'] = $this->Model_posyandu->get_all_posyandu_bumil_desa_group();
+
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -440,6 +450,9 @@ class Posyandu extends CI_Controller
         ]);
         $this->form_validation->set_rules('HB', 'Hb', 'required|trim', [
             'required' => 'HB tidak boleh kosong..!'
+        ]);
+        $this->form_validation->set_rules('kunjugan_ke', 'Kunjugan_ke', 'required|trim', [
+            'required' => 'Kunjugan Ke, harus dipilih..!'
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -483,6 +496,82 @@ class Posyandu extends CI_Controller
                 'berat_badan' => htmlspecialchars($this->input->post('berat_badan', true)),
                 'tinggi_badan' => htmlspecialchars($this->input->post('tinggi_badan', true)),
                 'HB' => htmlspecialchars($this->input->post('HB', true)),
+                'kunjungan_ke' => htmlspecialchars($this->input->post('kunjungan_ke', true)),
+                'bulan' =>  date('F'),
+                'tahun' => date('Y'),
+            ];
+            $this->Model_posyandu->add_posyandu($data);
+            $this->session->set_flashdata('message1', '<div class="alert alert-warning" id="msg" role="alert">Sudah ditamabah !</div>');
+            if ($this->session->userdata('level') == "desa" || $this->session->userdata('level') == "panitia") {
+                redirect('posyandu-desa-bumil');
+            } else {
+                redirect('posyandu-bumil');
+            }
+        }
+    }
+
+    public function add_posyandu_bumil_lanjutan($id_posyandu)
+    {
+        $this->form_validation->set_rules('umur', 'Umur', 'required|trim', [
+            'required' => 'Umur kandungan harus dipilih..!'
+        ]);
+        $this->form_validation->set_rules('berat_badan', 'Berat_badan', 'required|trim', [
+            'required' => 'Berat badan tidak boleh kosong..!'
+        ]);
+        $this->form_validation->set_rules('kunjungan_ke', 'Kunjungan_ke', 'required|trim', [
+            'required' => 'Kunjugan Ke, harus dipilih..!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Posyandu Lanjutan';
+            //$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
+            //       $data['posyandu'] = $this->Model_posyandu->get_all_posyandu();
+            $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['desa_data_login'] = $this->Model_login->desa_session();
+            $data['panitia_data_login'] = $this->Model_login->panitia_session();
+            $data['peserta_data_login'] = $this->Model_login->panitia_session();
+            $data['total_admin'] = $this->Model_user->count_admin_user();
+            $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
+            $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+            $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita
+            $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+            $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+            $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+            // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+            $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+            $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+            $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
+            $data['user_peserta_desa_balita'] = $this->Model_user->get_all_user_peserta_desa_balita();
+            $data['user_peserta_desa_bumil'] = $this->Model_user->get_all_user_peserta_desa_bumil();
+            $data['user_peserta_balita'] = $this->Model_user->get_all_user_peserta_balita();
+            $data['user_peserta_bumil'] = $this->Model_user->get_all_user_peserta_bumil();
+
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
+
+            $data['posyandu_e'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
+            // $id_posyandu = $this->input->post('id_posyandu', true);
+
+            // $data['cari_posyandu_bumil_desa'] = $this->Model_posyandu->get_all_posyandu_bumil_desa_group();
+            // $data['cari_posyandu_bumil'] = $this->Model_posyandu->get_all_posyandu_bumil_group();
+
+            // $data['posyandu_bumil'] = $this->Model_posyandu->cari_posyandu_bumil($id_posyandu);
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('bumil/v_add_posyandu_bumil_lanjutan', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'id_user' => htmlspecialchars($this->input->post('id_user', true)),
+                'HPHT' => htmlspecialchars($this->input->post('HPHT', true)),
+                'TTP' => htmlspecialchars($this->input->post('TTP', true)),
+                'umur' => htmlspecialchars($this->input->post('umur', true)),
+                'hamil_ke' => htmlspecialchars($this->input->post('hamil_ke', true)),
+                'berat_badan' => htmlspecialchars($this->input->post('berat_badan', true)),
+                'tinggi_badan' => htmlspecialchars($this->input->post('tinggi_badan', true)),
+                'HB' => htmlspecialchars($this->input->post('HB', true)),
+                'kunjungan_ke' => htmlspecialchars($this->input->post('kunjungan_ke', true)),
                 'bulan' =>  date('F'),
                 'tahun' => date('Y'),
             ];
@@ -522,6 +611,9 @@ class Posyandu extends CI_Controller
         $this->form_validation->set_rules('HB', 'Hb', 'required|trim', [
             'required' => 'HB tidak boleh kosong..!'
         ]);
+        $this->form_validation->set_rules('kunjugan_ke', 'Kunjugan_ke', 'required|trim', [
+            'required' => 'Kunjugan Ke, harus dipilih..!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Posyandu';
@@ -547,6 +639,10 @@ class Posyandu extends CI_Controller
             $data['user_peserta_balita'] = $this->Model_user->get_all_user_peserta_balita();
             $data['user_peserta_bumil'] = $this->Model_user->get_all_user_peserta_bumil();
 
+            $data['total_desa'] = $this->Model_desa->count_all_desa();
+
+            $data['posyandu_e_bumil'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
+
             $data['posyandu_e'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
 
             $this->load->view('templates/header', $data);
@@ -565,6 +661,7 @@ class Posyandu extends CI_Controller
                 'berat_badan' => htmlspecialchars($this->input->post('berat_badan', true)),
                 'tinggi_badan' => htmlspecialchars($this->input->post('tinggi_badan', true)),
                 'HB' => htmlspecialchars($this->input->post('HB', true)),
+                'kunjungan_ke' => htmlspecialchars($this->input->post('kunjungan_ke', true)),
             ];
             $this->Model_posyandu->edit_posyandu($data);
             $this->session->set_flashdata('message1', '<div class="alert alert-warning" id="msg" role="alert">Sudah diedit !</div>');
@@ -659,8 +756,6 @@ class Posyandu extends CI_Controller
 
 
         $tahun = $this->input->post('tahun', true);
-
-
         $data['filter_bumil_tahun1'] = $this->Model_posyandu->filter_tahun_bumil($tahun);
         $data['th'] = $tahun;
 

@@ -30,7 +30,7 @@
                                             <th>PSG</th>
                                             <th>GKN</th>
                                             <th>Kelamin</th>
-                                            <th>Umur</th>
+                                            <th>Umur Balita</th>
                                             <th>Tahun</th>
                                             <th>Kunjungan Bulan</th>
                                             <th>Aksi</th>
@@ -52,14 +52,7 @@
                                             <td><?= $psnd->PSG ?></td>
                                             <td><?= $psnd->GKN ?></td>
                                             <td><?= $psnd->kelamin ?></td>
-                                            <td><?php $lahir = $psnd->TTL;
-                                                    $tahun_lahir = substr($lahir, -4);
-                                                    $now = date("Y");
-                                                    (int) $tahun_lahir;
-                                                    (int) $now;
-                                                    $umur = $now - $tahun_lahir;
-                                                    echo $umur, ' Tahun'
-                                                    ?></td>
+                                            <td><?= $psnd->umur, ' Bulan' ?></td>
                                             <td><?= $psnd->tahun ?></td>
                                             <td><?= $psnd->bulan ?></td>
                                             <td>
