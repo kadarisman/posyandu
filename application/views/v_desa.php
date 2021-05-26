@@ -65,22 +65,37 @@
             <h2 style="color: white; font-weight:bold; text-align:left">Selamat datang di desa
                 <?= $desa->nama_desa; ?>..</h2>
             <p style="color: white; font-weight:bold;">Sistem Informasi Posyandu Kabupaten Bireuen </p>
-            <p><a class="btn btn-default" href="<?= base_url('pendaftaran-peserta/' . $desa->id_desa) ?>"
-                    role="button">Pendaftaran
-                    Posyandu <?= $desa->nama_desa; ?></a>
-                <a class="btn btn-default" href="<?= base_url('beranda') ?>" role="button">Beranda</a>
+            <p>
+                <a class="btn btn-default" href="<?= base_url('beranda') ?>" role="button">
+                    <span class="glyphicon glyphicon glyphicon-arrow-left"></span> Beranda</a>
+                <a class="btn btn-default" href="<?= base_url('pendaftaran-peserta/' . $desa->id_desa) ?>"
+                    role="button">Pendaftaran <span class="glyphicon glyphicon glyphicon-arrow-right"></span></a>
 
             </p>
-            <?= $this->session->flashdata('message1'); ?>
+            <p>
+            <div class="alert" role="alert" style="background-color: #F5F5DC;">
+                Jumlah peserta Posyandu desa <?= $desa->nama_desa, ' sampai tahun ',  date('Y') ?> bulan
+                <?= date('F'), ' adalah ', '<b>', $peserta_balita_desa ?> orang Balita </b>, dan
+                <b><?= $peserta_bumil_desa ?> orang
+                    Ibu Hamil</b>
+            </div>
+            </p>
         </div>
     </div>
-    <div class="container">
+
+
+
+    <div class=" container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-6">
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Data peserta <?= $desa->nama_desa; ?></h3>
+                            <?php if ($posyandu_balita_desa != null) { ?>
+                            <h3 class="box-title" id="judul">Data posyandu Balita <?= $desa->nama_desa; ?></h3>
+                            <?php } else { ?>
+                            <h3 class="box-title" id="judul">Belum ada data Posyandu Balita</h3>
+                            <?php } ?>
                             <br>
                         </div>
                         <!-- /.box-header -->
@@ -90,25 +105,28 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Username</th>
-                                            <th>Level</th>
-                                            <th>Prodi</th>
+                                            <th>Nama</th>
+                                            <th>Bulan Kunjungan</th>
+                                            <th>Tahun</th>
+                                            <th>Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> <?php
+                                            $no = 0;
+                                            foreach ($posyandu_balita_desa as $psnd11) :
+                                                $no++
+                                            ?>
                                         <tr>
-                                            <td>cccc</td>
-                                            <td>mm</td>
-                                            <td>sss</td>
-                                            <td>ccccc</td>
+                                            <td><?= $no ?></td>
+                                            <td><?= $psnd11->nama ?></td>
+                                            <td><?= $psnd11->bulan ?></td>
+                                            <td><?= $psnd11->tahun ?></td>
+                                            <td>
+                                                <a href="" class="badge progress-bar-success" data-toggle="modal"
+                                                    data-target="#<?= $psnd11->id_posyandu ?>">Lihat</a>
+                                            </td>
                                         </tr>
-
-                                        <tr>
-                                            <td>cc22222cc</td>
-                                            <td>2333</td>
-                                            <td>sss</td>
-                                            <td>2233</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -119,16 +137,17 @@
                 </div>
                 <!-- /.col -->
             </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-6">
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Data posyandu <?= $desa->nama_desa; ?></h3>
+                            <?php if ($posyandu_bumil_desa != null) { ?>
+                            <h3 class="box-title" id="judul">Data posyandu Ibu Hamil <?= $desa->nama_desa; ?>
+                                <?php } else { ?>
+                                <h3 class="box-title" id="judul">Belum ada data Posyandu Ibu Hamil</h3>
+                                <?php } ?>
+                            </h3>
                             <br>
                         </div>
                         <!-- /.box-header -->
@@ -138,25 +157,28 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Username</th>
-                                            <th>Level</th>
-                                            <th>Prodi</th>
+                                            <th>Nama</th>
+                                            <th>Bulan</th>
+                                            <th>Tahun</th>
+                                            <th>Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> <?php
+                                            $no = 0;
+                                            foreach ($posyandu_bumil_desa as $psnd12) :
+                                                $no++
+                                            ?>
                                         <tr>
-                                            <td>cccc</td>
-                                            <td>mm</td>
-                                            <td>sss</td>
-                                            <td>ccccc</td>
+                                            <td><?= $no ?></td>
+                                            <td><?= $psnd12->nama ?></td>
+                                            <td><?= $psnd12->bulan ?></td>
+                                            <td><?= $psnd12->tahun ?></td>
+                                            <td>
+                                                <a href="" class="badge progress-bar-success" data-toggle="modal"
+                                                    data-target="#<?= $psnd12->id_posyandu ?>">Lihat</a>
+                                            </td>
                                         </tr>
-
-                                        <tr>
-                                            <td>cc22222cc</td>
-                                            <td>2333</td>
-                                            <td>sss</td>
-                                            <td>2233</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -167,8 +189,119 @@
                 </div>
                 <!-- /.col -->
             </div>
+
         </div>
     </div>
+
+
+    <!-- modal balita -->
+    <?php foreach ($posyandu_balita_desa as $psnd11) : ?>
+    <div class="modal fade" id="<?= $psnd11->id_posyandu ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center>
+                        <h4 class="modal-title">Detail Data Posyandu Balita <br>
+                            atas nama <b><?= $psnd11->nama ?></b> bulan <?= $psnd11->bulan, ' tahun ', $psnd11->tahun ?>
+                        </h4>
+                    </center>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>BB</th>
+                                <th>TB</th>
+                                <th>Umur</th>
+                                <th>PSG</th>
+                                <th>GKN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="<?= base_url('assets/'); ?>img/users/default.jpg" class="img-rounded"
+                                        width="40" height="40">
+                                </td>
+                                <td><?= $psnd11->berat_badan ?></td>
+                                <td><?= $psnd11->tinggi_badan ?></td>
+                                <td><?= $psnd11->umur, ' Bulan' ?></td>
+                                <td><?= $psnd11->PSG ?></td>
+                                <td><?= $psnd11->GKN ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <?php endforeach; ?>
+
+
+
+    <!-- modalibu hamil -->
+    <?php foreach ($posyandu_bumil_desa as $psnd12) : ?>
+    <div class="modal fade" id="<?= $psnd12->id_posyandu ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center>
+                        <h4 class="modal-title">Detail Data Posyandu Ibu Hamil <br>
+                            atas nama <b><?= $psnd12->nama ?></b> bulan <?= $psnd12->bulan, ' tahun ', $psnd12->tahun ?>
+                        </h4>
+                    </center>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>BB</th>
+                                <th>TB</th>
+                                <th>HPHT</th>
+                                <th>TTP</th>
+                                <th>HB</th>
+                                <th>Hamil</th>
+                                <th>Kunjungan</th>
+                                <th>Usia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="<?= base_url('assets/'); ?>img/users/default.jpg" class="img-rounded"
+                                        width="40" height="40">
+                                </td>
+                                <td><?= $psnd12->berat_badan ?></td>
+                                <td><?= $psnd12->tinggi_badan ?></td>
+                                <td><?= $psnd12->HPHT ?></td>
+                                <td><?= $psnd12->TTP ?></td>
+                                <td><?= $psnd12->HB ?></td>
+                                <td><?= 'Ke ', $psnd12->hamil_ke ?></td>
+                                <td><?= 'Ke ', $psnd12->kunjungan_ke ?></td>
+                                <td><?= $psnd12->umur, ' Bulan' ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <?php endforeach; ?>
+
+
+
     <!-- jQuery 3 -->
     <script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -209,8 +342,10 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
-    <script src="<?= base_url('assets/'); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>bower_components/datatables.net/js/jquery.dataTables.min.js">
+    </script>
+    <script src="<?= base_url('assets/'); ?>bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js">
+    </script>
 
     <script>
     $(function() {

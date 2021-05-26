@@ -40,7 +40,12 @@
                             <li><a>Lahir : <?= $login_session['t_lahir'], ' ', $login_session['TTL'] ?></a></li>
                             <li><a>Kelamin : <?= $login_session['kelamin'] ?></a></li>
                             <li><a>Kriteria : <?= $login_session['kriteria'] ?></a></li>
+                            <?php if ($login_session['kriteria'] == 'Balita') { ?>
                             <li><a>Nama ibu : <?= $login_session['nama_ibu'] ?></a></li>
+                            <?php } else if ($login_session['kriteria'] == 'Ibu Hamil') { ?>
+                            <li><a>Nama suami : <?= $login_session['suami'] ?></a></li>
+                            <?php } else {
+                                } ?>
                             <?php } ?>
                             <center>
                                 <div class="row" style="margin-bottom: 15px;;">

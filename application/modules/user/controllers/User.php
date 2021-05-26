@@ -61,6 +61,9 @@ class User extends CI_Controller
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
 
+
+        $data['total_posyandu_ku'] = $this->Model_posyandu->count_data_posyandu_ku();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);

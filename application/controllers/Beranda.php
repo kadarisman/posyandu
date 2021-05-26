@@ -38,8 +38,11 @@ class Beranda extends CI_Controller
 	{
 		//$data['title'] = 'Desa';
 		$data['desa'] = $this->Model_desa->get_desa_name($id_desa);
-		//$data['peserta_desa'] = $this->Model_desa->count_peserta_desa();
-		//$data['all_peserta'] = $this->Model_peserta->get_all_peserta();
+		$data['peserta_balita_desa'] = $this->Model_user->count_peserta_balita_desa_b($id_desa);
+		$data['peserta_bumil_desa'] = $this->Model_user->count_peserta_bumil_desa_b($id_desa);
+		$data['all_peserta_desa'] = $this->Model_user->get_all_peserta_desa_b($id_desa);
+		$data['posyandu_balita_desa'] = $this->Model_posyandu->get_all_posyandu_balita_b($id_desa);
+		$data['posyandu_bumil_desa'] = $this->Model_posyandu->get_all_posyandu_bumil_b($id_desa);
 		$this->load->view('v_desa', $data);
 	}
 }

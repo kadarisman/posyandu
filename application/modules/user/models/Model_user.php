@@ -157,6 +157,39 @@ class Model_user extends CI_Model
         // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
         return $this->db->count_all_results();
     }
+
+
+    //queri untuk parsing data ke beranda view desa
+    public function count_peserta_balita_desa_b($id_desa) // method nyo
+    {
+        //$tahun = date('Y');
+        $this->db->from('user');
+        //$this->db->join('posyandu', 'posyandu.id_user = user.id_user', 'left');
+        $where = array('user.id_desa' => $id_desa, 'user.level' => 'peserta', 'user.kriteria' => 'Balita');
+        $this->db->where($where);
+        return $this->db->count_all_results();
+    }
+
+    public function count_peserta_bumil_desa_b($id_desa) // method nyo
+    {
+        //$tahun = date('Y');
+        $this->db->from('user');
+        //$this->db->join('posyandu', 'posyandu.id_user = user.id_user', 'left');
+        $where = array('id_desa' => $id_desa, 'user.level' => 'peserta', 'user.kriteria' => 'Ibu Hamil');
+        $this->db->where($where);
+        return $this->db->count_all_results();
+    }
+
+    public function get_all_peserta_desa_b($id_desa) // query get all data user from user table
+    {
+        $this->db->from('user');
+        $where = array('id_desa' => $id_desa, 'user.level' => 'peserta');
+        $this->db->where($where);
+        return $this->db->get()->result();
+    }
+    // end
+
+
     public function count_user_panitia_desa() // method nyo
     {
         $desa = $this->session->userdata('id_desa');

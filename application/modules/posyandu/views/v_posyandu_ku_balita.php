@@ -6,8 +6,13 @@
                     <div class="box">
                         <div class="box-header">
                             <center>
+                                <?php if ($posyandu_ku != null) { ?>
                                 <h3 class="box-title" id="judul">Semua Data Posyandu Kebalitaan
                                     <?= $login_session['nama']; ?></h3>
+                                <?php } else { ?>
+                                <h3 class="box-title" id="judul">Belum ada data Posyandu Kebalitaan
+                                    <?= $login_session['nama']; ?></h3>
+                                <?php } ?>
                             </center>
                             <br>
                         </div>

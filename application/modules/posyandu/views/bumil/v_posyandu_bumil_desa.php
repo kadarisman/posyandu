@@ -73,7 +73,7 @@
                                             <td><?= $psnd1->tahun ?></td>
                                             <td><?= $psnd1->bulan ?></td>
                                             <td>
-                                                <a href="<?= base_url('edit-posyandu-bumil/' . $psnd1->id_posyandu) ?>"
+                                                <a href="<?= base_url('editBumil/' . $psnd1->id_posyandu) ?>"
                                                     class="badge progress-bar-primary">Edit</a>
                                                 <a href="<?= base_url('posyandu/Posyandu/delete_posyandu_bumil/' . $psnd1->id_posyandu) ?>"
                                                     class="badge progress-bar-danger"

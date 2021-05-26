@@ -72,4 +72,4 @@ $route['posyandu-ku'] = 'posyandu/Posyandu/get_posyandu_ku';
 
 
 $route['tambah-posyandu-lanjutan/(:any)'] = 'posyandu/Posyandu/add_posyandu_bumil_lanjutan/$1';
-$route['edit-posyandu-bumil/(:any)'] = 'posyandu/Posyandu/edit_posyandu_bumil/$1';
+$route['editBumil/(:any)'] = 'posyandu/Posyandu/edit_posyandu_bumil/$1';

@@ -641,7 +641,7 @@ class Posyandu extends CI_Controller
 
             $data['total_desa'] = $this->Model_desa->count_all_desa();
 
-            $data['posyandu_e_bumil'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
+            //$data['posyandu_e_bumil'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
 
             $data['posyandu_e'] = $this->Model_posyandu->get_posyandu_by_id($id_posyandu);
 

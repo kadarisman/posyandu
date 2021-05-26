@@ -271,6 +271,32 @@ class Model_posyandu extends CI_Model
         return $this->db->get()->result();
     }
 
+    //query untuk view data posyandu di beranda view desa
+    public function get_all_posyandu_bumil_b($id_desa)
+    {
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.id_desa' => $id_desa, 'user.kriteria' => 'Ibu Hamil');
+        $this->db->where($where);
+        $this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+
+    public function get_all_posyandu_balita_b($id_desa)
+    {
+        $this->db->select('*');
+        $this->db->from('posyandu');
+        $this->db->join('user', 'user.id_user = posyandu.id_user', 'left');
+        $this->db->join('desa', 'desa.id_desa = user.id_desa', 'left');
+        $where = array('user.id_desa' => $id_desa, 'user.kriteria' => 'Balita');
+        $this->db->where($where);
+        $this->db->order_by('tahun', 'asc');
+        return $this->db->get()->result();
+    }
+    //end
+
     public function get_all_posyandu_bumil_desa_group()
     {
         $tahun = date('Y');

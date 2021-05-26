@@ -11,14 +11,14 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form action="" method="post">
-                        <input type="text" class="form-control" name="id_posyandu"
-                            value="<?= $posyandu_e_bumil->id_posyandu ?>">
+                        <input type="hidden" class="form-control" name="id_posyandu" posyandu_e
+                            value="<?= $posyandu_e->id_posyandu ?>">
                         <div class="box-body">
                             <div class="form-group">
                                 <label>Peserta</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="id_user">
-                                    <option value="<?= $posyandu_e_bumil->id_user ?>"><?= $posyandu_e_bumil->nama ?>
+                                    <option value="<?= $posyandu_e->id_user ?>"><?= $posyandu_e->nama ?>
                                     </option>
                                     <?php if ($this->session->userdata('level') == "desa" || $this->session->userdata('level') == "panitia") { ?>
                                     <?php foreach ($user_peserta_desa_bumil as $psrt) : ?>
@@ -36,7 +36,7 @@
                                 <label>HPHT</label>
                                 <div class="input-group date">
                                     <input type="text" class="form-control pull-right" placeholder="HPHT"
-                                        id="datepicker" name="HPHT" value="<?= $posyandu_e_bumil->HPHT ?>">
+                                        id="datepicker" name="HPHT" value="<?= $posyandu_e->HPHT ?>">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
@@ -47,7 +47,7 @@
                                 <label>TTP</label>
                                 <div class="input-group date">
                                     <input type="text" class="form-control pull-right" placeholder="TTP"
-                                        id="datepicker2" name="TTP" value="<?= $posyandu_e_bumil->TTP ?>">
+                                        id="datepicker2" name="TTP" value="<?= $posyandu_e->TTP ?>">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
@@ -58,7 +58,7 @@
                                 <label>Umur Kandungan</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="umur">
-                                    <option value="<?= $posyandu_e_bumil->umur ?>"><?= $posyandu_e_bumil->umur ?>
+                                    <option value="<?= $posyandu_e->umur ?>"><?= $posyandu_e->umur ?>
                                     </option>
                                     <?php for ($i = 0; $i <= 9; $i++) : ?>
                                     <option value="<?= $i ?>"><?= $i, ' Bulan' ?></option>
@@ -70,8 +70,8 @@
                                 <label>Hamil Ke</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="hamil_ke">
-                                    <option value="<?= $posyandu_e_bumil->hamil_ke ?>">
-                                        <?= $posyandu_e_bumil->hamil_ke ?></option>
+                                    <option value="<?= $posyandu_e->hamil_ke ?>">
+                                        <?= $posyandu_e->hamil_ke ?></option>
                                     <option value="I">I</option>
                                     <option value="II">II</option>
                                     <option value="III">III</option>
@@ -89,7 +89,7 @@
                                 <label>Umur Kehamilan</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="umur">
-                                    <option value="<?= $posyandu_e_bumil->umur ?>"><?= $posyandu_e_bumil->umur ?>
+                                    <option value="<?= $posyandu_e->umur ?>"><?= $posyandu_e->umur ?>
                                     </option>
                                     <?php for ($i = 0; $i <= 9; $i++) : ?>
                                     <option value="<?= $i ?>"><?= $i, ' Bulan' ?></option>
@@ -100,21 +100,21 @@
                             <div class="form-group has-feedback">
                                 <label>Berat Badan</label>
                                 <input type="text" class="form-control" name="berat_badan" id="berat_badan"
-                                    value="<?= $posyandu_e_bumil->berat_badan ?>">
+                                    value="<?= $posyandu_e->berat_badan ?>">
                                 <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
                                 <?= form_error('berat_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Tinggi Badan</label>
                                 <input type="text" class="form-control" name="tinggi_badan" id="tinggi_badan"
-                                    value="<?= $posyandu_e_bumil->tinggi_badan ?>">
+                                    value="<?= $posyandu_e->tinggi_badan ?>">
                                 <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
                                 <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>HB</label>
                                 <input type="text" class="form-control" placeholder="HB" name="HB" id="HB"
-                                    value="<?= $posyandu_e_bumil->HB ?>">
+                                    value="<?= $posyandu_e->HB ?>">
                                 <span class="glyphicon glyphicon-credit-card form-control-feedback"></span>
                                 <?= form_error('HB', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -122,8 +122,8 @@
                                 <label>Kunjugan Ke</label>
                                 <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
                                     name="kunjugan_ke">
-                                    <option value="<?= $posyandu_e_bumil->kunjungan_ke ?>">
-                                        <?= $posyandu_e_bumil->kunjungan_ke ?>
+                                    <option value="<?= $posyandu_e->kunjungan_ke ?>">
+                                        <?= $posyandu_e->kunjungan_ke ?>
                                     </option>
                                     <option value="I">I</option>
                                     <option value="II">II</option>

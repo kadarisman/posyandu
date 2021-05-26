@@ -37,8 +37,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php //var_dump($all_admin); 
-                                        ?>
                                         <?php
                                         $no = 0;
                                         foreach ($posyandu_desa as $psnd) :
