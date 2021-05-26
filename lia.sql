@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 07:44 AM
+-- Generation Time: May 26, 2021 at 09:37 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.1.29
 
@@ -80,7 +80,7 @@ INSERT INTO `posyandu` (`id_posyandu`, `id_user`, `berat_badan`, `tinggi_badan`,
 (4, 14, 'Normal', 'Normal', 21, 'Baik', 'Baik', '', '', '', '', '', '2021', 'January'),
 (5, 8, 'Normal', 'Normal', 21, 'Baik', 'Lebih', '', '', '', '', '', '2021', 'February'),
 (6, 14, 'Normal', 'Normal', 22, 'Baik', 'Lebih', '', '', '', '', '', '2021', 'February'),
-(17, 33, '62 kg', '150 cm', 3, NULL, NULL, '02/02/2021', '02/01/2021', 'II', '12.3', 'II', '2021', 'May'),
+(17, 33, '62 kg', '150 cm', 4, NULL, NULL, '02/02/2021', '02/01/2021', 'II', '12.3', 'I', '2021', 'May'),
 (19, 34, '65 kg', '155 cm', 4, NULL, NULL, '01/20/2021', '01/21/2021', 'II', '23.2', 'IV', '2021', 'May');
 
 -- --------------------------------------------------------
@@ -137,7 +137,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `suami`, `nik`, `
 (30, 'panitia2', '$2y$10$hVWtSg1bRZsJBs2GnT2bR.hTxJbeXfUjuSa/XerD8GMyJJz.d3l0O', 'Moha', '', '', NULL, NULL, NULL, NULL, NULL, 'panitia', 'D-CIJ', 1, '31-03-2021 00:40:54', '02-04-2021 15:57:56'),
 (32, '123', '$2y$10$UlXq0Sai4644GAoIfNNqXedU/4lAfsA0VzQmlIXGAR10FvtMOUitu', 'kkk', '', '', NULL, NULL, NULL, NULL, NULL, 'panitia', 'D-KMB', 1, '02-04-2021 01:35:36', '02-04-2021 02:04:25'),
 (33, 'maryam', '$2y$10$UlXq0Sai4644GAoIfNNqXedU/4lAfsA0VzQmlIXGAR10FvtMOUitu', 'Siti Maryam', 'Ali Markum', '131000484384', 'Kumbang', '10-03-1990', 'Wanita', 'Ibu Hamil', NULL, 'peserta', 'D-KMB', 1, '19-04-2021 00:55:24', NULL),
-(34, 'suharni', '$2y$10$UlXq0Sai4644GAoIfNNqXedU/4lAfsA0VzQmlIXGAR10FvtMOUitu', 'Maryati Suharni', 'Maimun Rahman', '0045487283428', 'Kumbang', '10-03-1990', 'Wanita', 'Ibu Hamil', NULL, 'peserta', 'D-KMB', 1, '19-04-2021 00:55:24', NULL);
+(34, 'suharni', '$2y$10$UlXq0Sai4644GAoIfNNqXedU/4lAfsA0VzQmlIXGAR10FvtMOUitu', 'Maryati Suharni', 'Maimun Rahman', '0045487283428', 'Kumbang', '10-03-1990', 'Wanita', 'Ibu Hamil', NULL, 'peserta', 'D-KMB', 1, '19-04-2021 00:55:24', NULL),
+(35, 'mirna', '$2y$10$a6lnSgmNNK8RORkMXTTaoOfc7yL2BS4Y1ROIyDdxvpcv2ErS5OnNS', 'Mirnawati', 'Alibasyah', '4344424423989', NULL, '02/09/2000', 'Wanita', 'Ibu Hamil', '', 'peserta', 'D-CIJ', 1, '27-05-2021 02:24:11', NULL);
 
 --
 -- Indexes for dumped tables
@@ -175,7 +176,7 @@ ALTER TABLE `posyandu`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
