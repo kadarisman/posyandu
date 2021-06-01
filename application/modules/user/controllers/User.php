@@ -440,7 +440,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('v_add_user_peserta', $data);
+            $this->load->view('admin/v_add_user_peserta', $data);
             $this->load->view('templates/footer_copy');
             $this->load->view('templates/footer');
         } else {
