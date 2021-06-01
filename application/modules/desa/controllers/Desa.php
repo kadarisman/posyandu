@@ -91,6 +91,14 @@
                 $data['title'] = 'Dashboard';
                 $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
                 $data['desa_data_login'] = $this->Model_login->desa_session();
+
+                // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
+                $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+                $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
+                $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
+                $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
+                $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
+
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/topbar', $data);
                 $this->load->view('templates/sidebar', $data);
