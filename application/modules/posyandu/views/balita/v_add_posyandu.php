@@ -18,7 +18,7 @@
                                     name="id_user">
                                     <option selected="true" disabled="disabled">Pilih Peserta</option>
                                     <?php if ($this->session->userdata('level') == "desa" || $this->session->userdata('level') == "panitia") { ?>
-                                    <?php foreach ($user_peserta_desa as $psrt) : ?>
+                                    <?php foreach ($user_peserta_desa_balita as $psrt) : ?>
                                     <option value="<?= $psrt->id_user ?>"><?= $psrt->nama ?></option>
                                     <?php endforeach; ?>
                                     <?php } else { ?>
