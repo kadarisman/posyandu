@@ -9,12 +9,17 @@
                                 Baru</a>
 
                             <center>
+                                <?php if ($posyandu_bumil_desa != null) { ?>
                                 <h3 class="box-title" id="judul">Semua Data Posyandu Ibu Hamil <br>desa <?php
-                                                                                                        if ($login_session['level'] == "panitia") {
-                                                                                                            echo $panitia_data_login['nama_desa'];
-                                                                                                        } else {
-                                                                                                            echo $desa_data_login['nama_desa'];
-                                                                                                        } ?></h3>
+                                                                                                            if ($login_session['level'] == "panitia") {
+                                                                                                                echo $panitia_data_login['nama_desa'];
+                                                                                                            } else {
+                                                                                                                echo $desa_data_login['nama_desa'];
+                                                                                                            } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                             <br>
                         </div>
@@ -92,12 +97,17 @@
                     <div class="box-body" style="width: 50%;">
                         <div class="box-header">
                             <center>
+                                <?php if ($cari_posyandu_bumil_desa != null) { ?>
                                 <h3 class="box-title" id="judul">Posyandu Lanjutan Ibu Hamil <br>desa <?php
-                                                                                                        if ($login_session['level'] == "panitia") {
-                                                                                                            echo $panitia_data_login['nama_desa'];
-                                                                                                        } else {
-                                                                                                            echo $desa_data_login['nama_desa'];
-                                                                                                        } ?></h3>
+                                                                                                            if ($login_session['level'] == "panitia") {
+                                                                                                                echo $panitia_data_login['nama_desa'];
+                                                                                                            } else {
+                                                                                                                echo $desa_data_login['nama_desa'];
+                                                                                                            } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                         </div>
                         <div class="table-responsive">

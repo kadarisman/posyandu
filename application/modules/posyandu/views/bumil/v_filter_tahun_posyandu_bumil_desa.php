@@ -20,17 +20,22 @@
                             </form>
 
                             <center>
+                                <?php if ($filter_bumil_tahun1 != null) { ?>
                                 <h3 class="box-title" id="judul"> <?php if ($filter_bumil_tahun1 != null) { ?>
                                     Rekap Data Posyandu Ibu Hamil<br>
                                     desa <?php
-                                                                        if ($login_session['level'] == "panitia") {
-                                                                            echo $panitia_data_login['nama_desa'];
-                                                                        } else {
-                                                                            echo $desa_data_login['nama_desa'], ' Tahun ', $th;
-                                                                        } ?>
+                                                                            if ($login_session['level'] == "panitia") {
+                                                                                echo $panitia_data_login['nama_desa'];
+                                                                            } else {
+                                                                                echo $desa_data_login['nama_desa'], ' Tahun ', $th;
+                                                                            } ?>
                                     <?php } else {
-                                                                        echo 'Data tidak ditemukan';
-                                                                    } ?></h3>
+                                                                            echo 'Data tidak ditemukan';
+                                                                        } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                             <br>
                         </div>

@@ -6,7 +6,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Peserta</h3>
+                        <h3 class="box-title">Tambah Peserta Ibu Hamil</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -65,31 +65,16 @@
                                 </div>
                                 <?= form_error('TTL', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
                             <div class="form-group has-feedback">
-                                <label class="radio-inline mb-1"><input type="radio" name="kelamin"
-                                        value="Pria">Pria</label>
-                                <label class="radio-inline mb-1"><input type="radio" name="kelamin"
-                                        value="Wanita">Wanita</label>
-                            </div>
-                            <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
-                            <div class="form-group">
-                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
-                                    name="kriteria">
-                                    <option selected="true" disabled="disabled">Kriteria</option>
-                                    <option value="Ibu Hamil">Ibu Hamil</option>
-                                    <option value="Balita">Balita</option>
-                                </select>
-                                <?= form_error('kriteria', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <input type="text" class="form-control" placeholder="Nama ibu" name="nama_ibu"
-                                    id="nama_ibu" value="<?= set_value('nama_ibu'); ?>">
+                                <input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami"
+                                    value="<?= set_value('suami'); ?>">
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                <?= form_error('nama_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?= form_error('suami', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?= base_url('peserta') ?>" class="btn btn-primary">Batal</a>
+                                <a href="<?= base_url('peserta-ibu-hamil') ?>" class="btn btn-primary">Batal</a>
                                 <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
                             </div>
                         </div>

@@ -7,12 +7,17 @@
                         <div class="box-header">
                             <a href="<?= base_url('tambah-posyandu') ?>" class="badge progress-bar-primary">Tambah</a>
                             <center>
+                                <?php if ($posyandu_desa != null) { ?>
                                 <h3 class="box-title" id="judul">Semua Data Posyandu Balita <br>desa <?php
-                                                                                                        if ($login_session['level'] == "panitia") {
-                                                                                                            echo $panitia_data_login['nama_desa'];
-                                                                                                        } else {
-                                                                                                            echo $desa_data_login['nama_desa'];
-                                                                                                        } ?></h3>
+                                                                                                            if ($login_session['level'] == "panitia") {
+                                                                                                                echo $panitia_data_login['nama_desa'];
+                                                                                                            } else {
+                                                                                                                echo $desa_data_login['nama_desa'];
+                                                                                                            } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                             <br>
                         </div>
@@ -30,6 +35,7 @@
                                             <th>PSG</th>
                                             <th>GKN</th>
                                             <th>Kelamin</th>
+                                            <th>Ibu</th>
                                             <th>Umur Balita</th>
                                             <th>Tahun</th>
                                             <th>Kunjungan Bulan</th>
@@ -50,6 +56,7 @@
                                             <td><?= $psnd->PSG ?></td>
                                             <td><?= $psnd->GKN ?></td>
                                             <td><?= $psnd->kelamin ?></td>
+                                            <td><?= $psnd->nama_ibu ?></td>
                                             <td><?= $psnd->umur, ' Bulan' ?></td>
                                             <td><?= $psnd->tahun ?></td>
                                             <td><?= $psnd->bulan ?></td>

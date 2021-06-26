@@ -145,9 +145,12 @@ class Login extends CI_Controller
         ]);
 
         $this->form_validation->set_rules('TTL', 'Ttl', 'required|trim', [
-            'required' => 'TTL tidak boleh kosong..!'
+            'required' => 'Tanggal tidak boleh kosong..!'
         ]);
 
+        $this->form_validation->set_rules('t_lahir', 'T_lahir', 'required|trim', [
+            'required' => 'Tempat Lahir tidak boleh kosong..!'
+        ]);
         $this->form_validation->set_rules('kelamin', 'Kelamin', 'required|trim', [
             'required' => 'Kelamin harus dipilih..!'
         ]);
@@ -170,6 +173,7 @@ class Login extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'nik' => htmlspecialchars($this->input->post('nik', true)),
                 'TTL' => htmlspecialchars($this->input->post('TTL', true)),
+                't_lahir' => htmlspecialchars($this->input->post('t_lahir', true)),
                 'kelamin' => htmlspecialchars($this->input->post('kelamin', true)),
                 'kriteria' => htmlspecialchars($this->input->post('kriteria', true)),
                 'nama_ibu' => htmlspecialchars($this->input->post('nama_ibu', true)),

@@ -79,6 +79,7 @@
                             </div>
                             <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
                             <?php if ($user_peserta->kriteria == 'Ibu Hamil') { ?>
+                            <label>Suami</label>
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami"
                                     value="<?= $user_peserta->suami ?>">
@@ -94,7 +95,11 @@
                             <?php } ?>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                <?php if ($user_peserta->kriteria == 'Ibu Hamil') { ?>
+                                <a href="<?= base_url('peserta-ibu-hamil') ?>" class="btn btn-primary">Batal</a>
+                                <?php } else { ?>
                                 <a href="<?= base_url('peserta') ?>" class="btn btn-primary">Batal</a>
+                                <?php } ?>
                                 <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
                             </div>
                         </div>

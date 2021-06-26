@@ -7,12 +7,17 @@
                         <div class="box-header">
                             <a href="<?= base_url('tambah-peserta-ku') ?>" class="badge progress-bar-primary">Tambah</a>
                             <center>
-                                <h3 class="box-title" id="judul">Semua Peserta desa <?php
-                                                                                    if ($login_session['level'] == "panitia") {
-                                                                                        echo $panitia_data_login['nama_desa'];
-                                                                                    } else {
-                                                                                        echo $desa_data_login['nama_desa'];
-                                                                                    } ?></h3>
+                                <?php if ($user_peserta != null) { ?>
+                                <h3 class="box-title" id="judul">Semua Peserta Balita desa <?php
+                                                                                                if ($login_session['level'] == "panitia") {
+                                                                                                    echo $panitia_data_login['nama_desa'];
+                                                                                                } else {
+                                                                                                    echo $desa_data_login['nama_desa'];
+                                                                                                } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                             <br>
                         </div>

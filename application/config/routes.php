@@ -29,10 +29,12 @@ $route['profil'] = 'user/User/profile';
 
 //routes for user desa after login
 $route['peserta'] = 'user/User/user_peserta_desa';
+$route['peserta-ibu-hamil'] = 'user/User/user_peserta_desa_bumil';
 $route['panitia'] = 'user/User/user_panitia_desa';
 $route['edit-peserta-ku/(:any)'] = 'user/User/edit_user_peserta_desa/$1';
 $route['edit-panitia-ku/(:any)'] = 'user/User/edit_user_panitia_desa/$1';
-$route['tambah-peserta-ku'] = 'user/User/add_user_peserta_desa';
+$route['tambah-peserta-ku'] = 'user/User/add_user_peserta_desa_balita';
+$route['tambah-peserta-ibu-hamil'] = 'user/User/add_user_peserta_desa_bumil';
 $route['tambah-panitia-ku'] = 'user/User/add_user_panitia_desa';
 $route['edit-peserta-ku/(:any)'] = 'user/User/edit_user_peserta_desa/$1';
 $route['edit-panitia-ku/(:any)'] = 'user/User/edit_user_panitia_desa/$1';

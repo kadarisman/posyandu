@@ -153,8 +153,18 @@ class Model_user extends CI_Model
         $desa = $this->session->userdata('id_desa');
         $this->db->from('user');
         $this->db->where('id_desa', $desa);
-        $this->db->where('level', 'peserta');
+        $where = array('level' => 'peserta', 'kriteria' => 'balita');
+        $this->db->where($where);
         // $this->db->query("SELECT * FROM user where id_desa = '.$desa.'");
+        return $this->db->count_all_results();
+    }
+    public function count_user_pesrta_desa_bumil() // method nyo
+    {
+        $desa = $this->session->userdata('id_desa');
+        $this->db->from('user');
+        $this->db->where('id_desa', $desa);
+        $where = array('level' => 'peserta', 'kriteria' => 'ibu hamil');
+        $this->db->where($where);
         return $this->db->count_all_results();
     }
 

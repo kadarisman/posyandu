@@ -71,63 +71,75 @@
                 </a>
             </li>
             <li><a href="<?= base_url('peserta') ?>"><i class="fa fa-users"></i>
-                    Peserta
+                    Peserta Balita
                     <span class="pull-right-container"><?= $total_user_peserta_desa ?>
+                    </span>
+                </a>
+            </li>
+            <li><a href="<?= base_url('peserta-ibu-hamil') ?>"><i class="fa fa-users"></i>
+                    Peserta Ibu Hamil
+                    <span class="pull-right-container"><?= $total_user_peserta_desa_bumil ?>
                     </span>
                 </a>
             </li>
 
             <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
-                    Balita
+                    Posyandu Balita
                     <span class="pull-right-container"><?= $total_posyandu_desa ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu-desa-bumil') ?>"><i class="fa fa-database"></i>
-                    Ibu Hamil
+                    Posyandu Ibu Hamil
                     <span class="pull-right-container"><?= $total_posyandu_bumil_desa ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-balita-desa') ?>"><i class="fa fa-list"></i>
-                    Rekap Balita
+                    Rekap Posyandu Balita
                     <span class="pull-right-container">
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-bumil-desa') ?>"><i class="fa fa-list"></i>
-                    Rekap Ibu Hamil
+                    Rekap Posyandu Ibu Hamil
                     <span class="pull-right-container">
                     </span>
                 </a>
             </li>
             <?php } else if ($login_session['level'] == 'panitia') { ?>
             <li><a href="<?= base_url('peserta') ?>"><i class="fa fa-users"></i>
-                    Peserta
+                    Peserta Balita
                     <span class="pull-right-container"><?= $total_user_peserta_desa ?>
                     </span>
                 </a>
             </li>
+            <li><a href="<?= base_url('peserta-ibu-hamil') ?>"><i class="fa fa-users"></i>
+                    Peserta Ibu Hamil
+                    <span class="pull-right-container"><?= $total_user_peserta_desa_bumil ?>
+                    </span>
+                </a>
+            </li>
             <li><a href="<?= base_url('posyandu-desa') ?>"><i class="fa fa-database"></i>
-                    Balita
+                    Posyandu Balita
                     <span class="pull-right-container"><?= $total_posyandu_desa ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu-desa-bumil') ?>"><i class="fa fa-database"></i>
-                    Ibu Hamil
+                    Posyandu Ibu Hamil
                     <span class="pull-right-container"><?= $total_posyandu_bumil_desa ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-balita-desa') ?>"><i class="fa fa-list"></i>
-                    Rekap Balita
+                    Rekap Posyandu Balita
                     <span class="pull-right-container">
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-bumil-desa') ?>"><i class="fa fa-list"></i>
-                    Rekap Ibu Hamil
+                    Rekap Posyandu Ibu Hamil
                     <span class="pull-right-container">
                     </span>
                 </a>

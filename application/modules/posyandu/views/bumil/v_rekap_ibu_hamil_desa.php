@@ -20,13 +20,18 @@
                             </form>
 
                             <center>
+                                <?php if ($rekap_bumil_desa != null) { ?>
                                 <h3 class="box-title" id="judul">Rekap semua Data Posyandu Ibu Hamil<br>
                                     desa <?php
-                                            if ($login_session['level'] == "panitia") {
-                                                echo $panitia_data_login['nama_desa'];
-                                            } else {
-                                                echo $desa_data_login['nama_desa'], ' Tahun ', date('Y');
-                                            } ?></h3>
+                                                if ($login_session['level'] == "panitia") {
+                                                    echo $panitia_data_login['nama_desa'];
+                                                } else {
+                                                    echo $desa_data_login['nama_desa'], ' Tahun ', date('Y');
+                                                } ?>
+                                    <?php } else { ?>
+                                    Belum ada data
+                                    <?php } ?>
+                                </h3>
                             </center>
                             <br>
                         </div>
