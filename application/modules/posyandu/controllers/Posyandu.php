@@ -16,6 +16,7 @@ class Posyandu extends CI_Controller
         $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['desa_data_login'] = $this->Model_login->desa_session();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
         $data['total_admin'] = $this->Model_user->count_admin_user();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
@@ -44,6 +45,7 @@ class Posyandu extends CI_Controller
         $data['desa_data_login'] = $this->Model_login->desa_session();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_admin'] = $this->Model_user->count_admin_user();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
@@ -77,6 +79,7 @@ class Posyandu extends CI_Controller
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
         $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
         // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
@@ -122,6 +125,7 @@ class Posyandu extends CI_Controller
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
             $data['peserta_data_login'] = $this->Model_login->panitia_session();
             $data['total_admin'] = $this->Model_user->count_admin_user();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
             $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
             $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
@@ -194,6 +198,7 @@ class Posyandu extends CI_Controller
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
             $data['peserta_data_login'] = $this->Model_login->panitia_session();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             $data['total_admin'] = $this->Model_user->count_admin_user();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
             $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
@@ -272,6 +277,7 @@ class Posyandu extends CI_Controller
         //$data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
@@ -309,6 +315,7 @@ class Posyandu extends CI_Controller
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
         $data['total_admin'] = $this->Model_user->count_admin_user();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
         // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
@@ -340,6 +347,7 @@ class Posyandu extends CI_Controller
         $data['total_admin'] = $this->Model_user->count_admin_user();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
         $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
         $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
@@ -380,6 +388,7 @@ class Posyandu extends CI_Controller
         $data['total_admin'] = $this->Model_user->count_admin_user();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
         $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
         $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
@@ -413,6 +422,7 @@ class Posyandu extends CI_Controller
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
         $data['total_admin'] = $this->Model_user->count_admin_user();
         $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
         $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
         // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
@@ -471,6 +481,7 @@ class Posyandu extends CI_Controller
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
             $data['peserta_data_login'] = $this->Model_login->panitia_session();
             $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             $data['total_admin'] = $this->Model_user->count_admin_user();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
             $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
@@ -542,6 +553,7 @@ class Posyandu extends CI_Controller
             $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
             $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             $data['total_posyandu'] = $this->Model_posyandu->count_all_data_posyandu(); //balita
             $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
             $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
@@ -631,6 +643,7 @@ class Posyandu extends CI_Controller
             $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['desa_data_login'] = $this->Model_login->desa_session();
             $data['panitia_data_login'] = $this->Model_login->panitia_session();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             $data['peserta_data_login'] = $this->Model_login->panitia_session();
             $data['total_admin'] = $this->Model_user->count_admin_user();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
@@ -692,6 +705,7 @@ class Posyandu extends CI_Controller
         //$data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil
         $data['total_admin'] = $this->Model_user->count_admin_user();
@@ -720,7 +734,7 @@ class Posyandu extends CI_Controller
         $data['rekap_bumil_desa'] = $this->Model_posyandu->rekap_bumil_desa();
         //$data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
         //$data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
-        $data['panitia_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
         $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
@@ -747,6 +761,7 @@ class Posyandu extends CI_Controller
         $data['login_session'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['desa_data_login'] = $this->Model_login->desa_session();
         $data['rekap_balita_desa'] = $this->Model_posyandu->rekap_balita_desa();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         // $data['rekap_balita_desa_januari'] = $this->Model_posyandu->rekap_balita_desa_group_januari();
         // $data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
@@ -787,6 +802,7 @@ class Posyandu extends CI_Controller
         // $data['rekap_balita_desa_februari'] = $this->Model_posyandu->rekap_balita_desa_group_februari();
         $data['panitia_data_login'] = $this->Model_login->panitia_session();
         $data['peserta_data_login'] = $this->Model_login->panitia_session();
+        $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
         $data['total_user_peserta_desa_bumil'] = $this->Model_user->count_user_pesrta_desa_bumil();
         $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
         $data['total_posyandu_bumil_desa'] = $this->Model_posyandu->count_data_posyandu_bumil_desa(); //bumil

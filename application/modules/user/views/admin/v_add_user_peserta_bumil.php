@@ -6,15 +6,23 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Peserta Ibu Hamil</h3>
+                        <h3 class="box-title">Tambah Peserta</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form action="" method="post">
 
                         <div class="box-body">
-                            <input type="hidden" class="form-control"" name=" id_desa"
-                                value="<?= $login_session['id_desa'] ?>">
+                            <div class="form-group">
+                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
+                                    name="id_desa">
+                                    <option selected="true" disabled="disabled">Pilih Desa</option>
+                                    <?php foreach ($all_desa as $ds) : ?>
+                                    <option value="<?= $ds->id_desa ?>"><?= $ds->nama_desa ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?= form_error('id_desa', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Username" name="username"
                                     id="username" value="<?= set_value('username'); ?>">
@@ -65,7 +73,6 @@
                                 </div>
                                 <?= form_error('TTL', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami"
                                     value="<?= set_value('suami'); ?>">
@@ -74,7 +81,7 @@
                             </div>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?= base_url('peserta-ibu-hamil') ?>" class="btn btn-primary">Batal</a>
+                                <a href="<?= base_url('all-peserta-bumil') ?>" class="btn btn-primary">Batal</a>
                                 <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
                             </div>
                         </div>

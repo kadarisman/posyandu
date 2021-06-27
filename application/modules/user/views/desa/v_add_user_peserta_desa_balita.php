@@ -61,7 +61,7 @@
                                         <i class="fa fa-calendar"></i>
                                     </div>
                                     <input type="text" class="form-control pull-right" placeholder="TTL" id="datepicker"
-                                        name="TTL">
+                                        name="TTL" autocomplete="off">
                                 </div>
                                 <?= form_error('TTL', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>

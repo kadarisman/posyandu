@@ -5,8 +5,8 @@
                 <div class="box">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title" id="judul">Semua Peserta</h3>
-                            <a href="<?= base_url('tambah-peserta') ?>" class="badge progress-bar-primary">+</a>
+                            <h3 class="box-title" id="judul">Semua Peserta Ibu Hamil</h3>
+                            <a href="<?= base_url('tambah-peserta-bumil') ?>" class="badge progress-bar-primary">+</a>
                             <br>
                         </div>
                         <!-- /.box-header -->
@@ -22,7 +22,7 @@
                                             <th>Nama</th>
                                             <th>Nik</th>
                                             <th>Lahir</th>
-                                            <th>Nama Ibu</th>
+                                            <th>Suami</th>
                                             <th>Kriteria</th>
                                             <th>Kelamin</th>
                                             <th>Desa</th>
@@ -37,7 +37,7 @@
                                         ?>
                                         <?php
                                         $no = 0;
-                                        foreach ($user_peserta as $psrt) :
+                                        foreach ($user_peserta_bumil as $psrt) :
                                             $no++
                                         ?>
                                         <tr>
@@ -49,7 +49,7 @@
                                             <td><?= $psrt->nama ?></td>
                                             <td><?= $psrt->nik ?></td>
                                             <td><?= $psrt->t_lahir, ', ', $psrt->TTL ?></td>
-                                            <td><?= $psrt->nama_ibu ?></td>
+                                            <td><?= $psrt->suami ?></td>
                                             <td><?= $psrt->kriteria ?></td>
                                             <td><?php
                                                     if ($psrt->kriteria == 'Ibu Hamil') {
@@ -77,7 +77,7 @@
                                             <td>
                                                 <a href="<?= base_url('edit-peserta/' . $psrt->id_user) ?>"
                                                     class="badge progress-bar-primary">Edit</a>
-                                                <a href="<?= base_url('user/User/delete_peserta/' . $psrt->id_user) ?>"
+                                                <a href="<?= base_url('user/User/delete_peserta_bumil/' . $psrt->id_user) ?>"
                                                     class="badge progress-bar-danger"
                                                     onclick="return confirm('Yakin..?');">Hapus</a>
                                             </td>

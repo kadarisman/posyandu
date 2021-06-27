@@ -16,6 +16,7 @@
             $data['title'] = 'Semua Desa';
             $data['total_desa'] = $this->Model_desa->count_all_desa();
             $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
+            $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
             //$data['total_user'] = $this->Model_user->count_all_user();
             $data['total_admin'] = $this->Model_user->count_admin_user();
             $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
@@ -50,6 +51,7 @@
             if ($this->form_validation->run() == false) {
                 $data['title'] = 'Tambah Desa';
                 $data['total_admin'] = $this->Model_user->count_admin_user();
+                $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
                 $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
                 $data['all_desa'] = $this->Model_desa->get_all_desa();
                 $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
@@ -94,6 +96,7 @@
 
                 // $data['hitung_coba'] = $this->Model_user->hitung_coba();//nyo controller 
                 $data['total_user_peserta_desa'] = $this->Model_user->count_user_pesrta_desa();
+                $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
                 $data['total_user_panitia_desa'] = $this->Model_user->count_user_panitia_desa();
                 $data['total_posyandu_desa'] = $this->Model_posyandu->count_data_posyandu_desa(); //balita
                 $data['total_posyandu_bumil'] = $this->Model_posyandu->count_all_data_bumil_posyandu(); //bumil
@@ -127,6 +130,7 @@
                 $data['total_admin'] = $this->Model_user->count_admin_user();
                 $data['total_admin_desa'] = $this->Model_user->count_admin_desa();
                 $data['desa'] = $this->Model_desa->get_desa_name($id_desa);
+                $data['total_user_peserta_bumil_adm'] = $this->Model_user->count_all_user_pesrta_bumil_adm();
                 $data['total_user_peserta'] = $this->Model_user->count_all_user_pesrta();
                 $data['total_user_panitia'] = $this->Model_user->count_all_user_panitia();
                 $data['total_desa'] = $this->Model_desa->count_all_desa();

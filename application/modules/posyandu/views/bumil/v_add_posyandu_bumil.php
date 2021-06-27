@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <div class="input-group date">
                                     <input type="text" class="form-control pull-right" placeholder="HPHT"
-                                        id="datepicker" name="HPHT">
+                                        id="datepicker" name="HPHT" autocomplete="off">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <div class="input-group date">
                                     <input type="text" class="form-control pull-right" placeholder="TTP"
-                                        id="datepicker2" name="TTP">
+                                        id="datepicker2" name="TTP" autocomplete="off">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>

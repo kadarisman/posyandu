@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li><a href="<?= base_url('all-admin-desa') ?>"><i class="fa fa-users"></i>
-                    Admin Desa
+                    Desa
                     <span class="pull-right-container"><?= $total_admin_desa ?>
                     </span>
                 </a>
@@ -28,37 +28,43 @@
                 </a>
             </li>
             <li><a href="<?= base_url('all-peserta') ?>"><i class="fa fa-users"></i>
-                    Peserta
+                    Peserta Balita
                     <span class="pull-right-container"><?= $total_user_peserta ?>
                     </span>
                 </a>
             </li>
+            <li><a href="<?= base_url('all-peserta-bumil') ?>"><i class="fa fa-users"></i>
+                    Peserta Ibu Hamil
+                    <span class="pull-right-container"><?= $total_user_peserta_bumil_adm ?>
+                    </span>
+                </a>
+            </li>
             <li><a href="<?= base_url('desa') ?>"><i class="fa fa-home"></i>
-                    Desa
+                    Data Desa
                     <span class="pull-right-container"><?= $total_desa ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu') ?>"><i class="fa fa-database"></i>
-                    Balita
+                    Posyandu Balita
                     <span class="pull-right-container"> <?= $total_posyandu ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('posyandu-bumil') ?>"><i class="fa fa-database"></i>
-                    Ibu Hamil
+                    Posyandu Ibu Hamil
                     <span class="pull-right-container"> <?= $total_posyandu_bumil ?>
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-balita') ?>"><i class="fa fa-list"></i>
-                    Rekap Balita
+                    Rekap Posyandu Balita
                     <span class="pull-right-container">
                     </span>
                 </a>
             </li>
             <li><a href="<?= base_url('rekap-bumil') ?>"><i class="fa fa-list"></i>
-                    Rekap Ibu Hamil
+                    Rekap Posyandu Ibu Hamil
                     <span class="pull-right-container">
                     </span>
                 </a>

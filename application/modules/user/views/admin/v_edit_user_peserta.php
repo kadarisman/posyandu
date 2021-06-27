@@ -77,10 +77,12 @@
                             </div>
                             <label>Kelamin</label>
                             <div class="form-group has-feedback">
+                                <?php if ($user_peserta->kriteria == 'Balita') { ?>
                                 <label class="radio-inline mb-1"><input type="radio" name="kelamin" value="Pria"
                                         <?php if ($user_peserta->kelamin == 'Pria') {
-                                                                                                                        echo "checked";
-                                                                                                                    } ?>>Pria</label>
+                                                                                                                            echo "checked";
+                                                                                                                        } ?>>Pria</label>
+                                <?php } ?>
                                 <label class="radio-inline mb-1"><input type="radio" name="kelamin" value="Wanita"
                                         <?php if ($user_peserta->kelamin == 'Wanita') {
                                                                                                                         echo "checked";
@@ -88,6 +90,7 @@
                             </div>
                             <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
                             <?php if ($user_peserta->kriteria == 'Ibu Hamil') { ?>
+                            <label>Suami</label>
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Nama Suami" name="suami" id="suami"
                                     value="<?= $user_peserta->suami ?>">
@@ -103,7 +106,11 @@
                             <?php } ?>
                             <div class="social-auth-links text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                <?php if ($user_peserta->kriteria == 'Balita') { ?>
                                 <a href="<?= base_url('all-peserta') ?>" class="btn btn-primary">Batal</a>
+                                <?php } else { ?>
+                                <a href="<?= base_url('all-peserta-bumil') ?>" class="btn btn-primary">Batal</a>
+                                <?php } ?>
                                 <!-- <a href="#" class="btn btn-block btn-success">Daftar</a> -->
                             </div>
                         </div>

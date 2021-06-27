@@ -144,7 +144,14 @@ class Model_user extends CI_Model
 
     public function count_all_user_pesrta() // pengen lon hitung dile bg
     {
-        $this->db->where('level', 'peserta');
+        $where = array('level' => 'peserta', 'kriteria' => 'balita');
+        $this->db->where($where);
+        return $this->db->count_all_results('user');
+    }
+    public function count_all_user_pesrta_bumil_adm() // pengen lon hitung dile bg
+    {
+        $where = array('level' => 'peserta', 'kriteria' => 'ibu hamil');
+        $this->db->where($where);
         return $this->db->count_all_results('user');
     }
 

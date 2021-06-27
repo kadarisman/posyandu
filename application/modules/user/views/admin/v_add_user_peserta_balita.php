@@ -69,26 +69,18 @@
                                         <i class="fa fa-calendar"></i>
                                     </div>
                                     <input type="text" class="form-control pull-right" placeholder="TTL" id="datepicker"
-                                        name="TTL">
+                                        name="TTL" autocomplete="off">
                                 </div>
                                 <?= form_error('TTL', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="form-group has-feedback">
+                            <div class=" form-group has-feedback">
                                 <label class="radio-inline mb-1"><input type="radio" name="kelamin"
                                         value="Pria">Pria</label>
                                 <label class="radio-inline mb-1"><input type="radio" name="kelamin"
                                         value="Wanita">Wanita</label>
                             </div>
                             <?= form_error('kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
-                            <div class="form-group">
-                                <select class="form-control border border-dark" tabindex="-1" aria-hidden="true"
-                                    name="kriteria">
-                                    <option selected="true" disabled="disabled">Kriteria</option>
-                                    <option value="Ibu Hamil">Ibu Hamil</option>
-                                    <option value="Balita">Balita</option>
-                                </select>
-                                <?= form_error('kriteria', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
+
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" placeholder="Nama ibu" name="nama_ibu"
                                     id="nama_ibu" value="<?= set_value('nama_ibu'); ?>">
